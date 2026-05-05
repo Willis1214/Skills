@@ -9,7 +9,7 @@
   "recommended_install_path": "$CODEX_HOME/skills/token-gate",
   "publish_target": {
     "platform": "GitHub",
-    "repository_name": "token-gate",
+    "repository_name": "Token-Gate_Skill",
     "visibility": "public"
   },
   "files": [
