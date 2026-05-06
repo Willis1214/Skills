@@ -6,5 +6,5 @@
   "skill_path": "wechat-message/SKILL.md",
   "agents_path": "wechat-message/agents/openai.yaml",
   "license": "UNLICENSED",
-  "repository": "https://github.com/Willis1214/wechat-message"
+  "repository": "https://github.com/Willis1214/Wechat-Message-Skill"
 }

@@ -39,7 +39,7 @@ Do not use this skill when:
 
 ```bash
 mkdir -p ~/.codex/skills
-git clone https://github.com/Willis1214/wechat-message.git /tmp/wechat-message-skill
+git clone https://github.com/Willis1214/Wechat-Message-Skill.git /tmp/wechat-message-skill
 cp -R /tmp/wechat-message-skill/wechat-message ~/.codex/skills/wechat-message
 ```
 
@@ -118,7 +118,7 @@ Wechat Message 是一个 Codex skill，用于通过 macOS 桌面微信的固定�
 
 ```bash
 mkdir -p ~/.codex/skills
-git clone https://github.com/Willis1214/wechat-message.git /tmp/wechat-message-skill
+git clone https://github.com/Willis1214/Wechat-Message-Skill.git /tmp/wechat-message-skill
 cp -R /tmp/wechat-message-skill/wechat-message ~/.codex/skills/wechat-message
 ```
 
