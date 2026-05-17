@@ -1,0 +1,31 @@
+{
+  "name": "pm-consultant",
+  "display_title": "PM Consultant",
+  "version": "1.0.0",
+  "release_date": "2026-05-18",
+  "description": "Codex skill for staged product-management and technical-architecture consultation, progressing complex engineering ideas through decision records, PRD, code design, UAT/QC standards, and retrospective.",
+  "language": [
+    "en",
+    "zh-CN"
+  ],
+  "source_skill_path": "/Users/lizhendong/.codex/skills/pm-consultant",
+  "repository": {
+    "owner": "Willis1214",
+    "requested_name": "PM Consultant",
+    "repo_slug": "PM-Consultant-Skill",
+    "visibility": "public"
+  },
+  "skill_files": [
+    "pm-consultant/SKILL.md",
+    "pm-consultant/agents/openai.yaml",
+    "pm-consultant/references/stage-1-consulting.md",
+    "pm-consultant/references/stage-2-prd.md",
+    "pm-consultant/references/stage-3-code-design.md",
+    "pm-consultant/references/stage-4-uat-qc.md",
+    "pm-consultant/references/stage-5-retrospective.md"
+  ],
+  "documentation": [
+    "README.md"
+  ],
+  "license": "UNLICENSED"
+}

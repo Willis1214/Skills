@@ -1,0 +1,4 @@
+interface:
+  display_name: "PM Consultant"
+  short_description: "Staged product and architecture consulting"
+  default_prompt: "Use $pm-consultant to guide a complex engineering idea through staged consultation, decision records, PRD, core code design, UAT/QC standards, and retrospective without jumping stages."
