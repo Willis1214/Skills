@@ -1,24 +1,36 @@
 # Skills
 
-This repository consolidates selected Codex skill repositories under one GitHub repository.
+Public Codex skills maintained by Willis.
 
-The `main` branch is an index only. Each skill is stored on its own branch, preserving the source repository content and commit history from the original skill repository.
+Each branch in this repository is a standalone skill package. Open the branch for the skill you need, then use the folder in that branch as the installable skill source.
 
-## Branch Index
+## How To Use
 
-| Branch | Skill | Version | Revision history | What it does | Trigger |
+1. Choose a skill from the table below.
+2. Open its branch.
+3. Review the branch README and `manifest.json`.
+4. Copy or install the skill folder into your Codex skills directory.
+
+The `main` branch is only the catalog. Skill source files live in the individual branches.
+
+## Skill Catalog
+
+| Skill | Branch | Version | Revision history | What it helps with | Use it when |
 | --- | --- | --- | --- | --- | --- |
-| [`Red-Team-Skill`](https://github.com/Willis1214/Skills/tree/Red-Team-Skill) | Red Team (`red-team`) | `1.0.0` | Initial public release on `2026-05-18`; no standalone `REVISION_HISTORY.md` in the source repo. | Performs strict adversarial review of plans, prompts, PRDs, workflows, proposals, and decision materials, focusing on boundary conditions, hidden assumptions, logic gaps, evidence quality, execution risk, and required improvements. | Use when the user asks for Red Team review, adversarial review, attack-style critique, risk review, boundary-condition review, hidden-assumption detection, execution-risk review, or logical vulnerability review. |
-| [`PM-Consultant-Skill`](https://github.com/Willis1214/Skills/tree/PM-Consultant-Skill) | PM Consultant (`pm-consultant`) | `1.0.0` | Initial public release on `2026-05-18`; no standalone `REVISION_HISTORY.md` in the source repo. | Provides staged product-management and technical-architecture consultation for complex engineering ideas, systems, tools, workflows, PRDs, code design, UAT/QC standards, and retrospectives. | Use when the user wants structured PM/architecture consultation and decision records; do not jump to PRD, code, tests, or retrospective unless explicitly triggered. |
-| [`Diff-Output-Skill`](https://github.com/Willis1214/Skills/tree/Diff-Output-Skill) | Diff Output (`diff-output`) | `1.0.0` | Initial public release on `2026-05-18`; no standalone `REVISION_HISTORY.md` in the source repo. | Summarizes modifications, updates, comparisons, version differences, before/after states, and change logs in a fixed Markdown table. | Use when the user asks for modification/update/comparison output and wants the table columns `Type`, `Content`, `As is`, `To be`, and `Why`. |
-| [`Program-Asset-Builder-Skill`](https://github.com/Willis1214/Skills/tree/Program-Asset-Builder-Skill) | Program Asset Builder (`program-asset-builder`) | `1.1.0` | Branch includes `REVISION_HISTORY.md`. Current release `v1.1.0` on `2026-05-13` converted final review, usage, and revision-history deliverables to Chinese-first HTML outputs; previous `v1.0.0` is the initial public release. | Builds OpenCode-compatible program asset packages from known source code, including Chinese-first HTML review report, usage introduction, revision history, program intelligence, program card, optional QC/demo assets, validation checklist, scoring review, and terminal summary. | Use when the user needs to package a final known source program into a structured program asset package with review, usage, revision, intelligence, card, and release-gate artifacts. |
-| [`Wechat-Message-Skill`](https://github.com/Willis1214/Skills/tree/Wechat-Message-Skill) | Wechat Message (`wechat-message`) | `1.0.0` | Initial public release; no standalone `REVISION_HISTORY.md` in the source repo. | Sends WeChat messages through the visible macOS desktop WeChat app using a fixed Computer Use and keyboard-shortcut workflow. | Use when Codex needs to send a message to a named WeChat contact or group without using bridge services, private WeChat APIs, wxauto, or MCP message-sending servers. |
-| [`Token-Gate-Skill`](https://github.com/Willis1214/Skills/tree/Token-Gate-Skill) | Token Gate (`token-gate`) | `0.1.0` | Branch includes `RELEASE_NOTES.md`. Initial public release candidate on `2026-05-05`, adding the silent pre-execution gate, four-level interruption gate, and validation notes. | Detects large avoidable token waste before expensive agent work while preserving the user's final goal, deliverable, quality bar, and acceptance criteria. | Use silently before high-cost repository scans, large-file/log/PDF/CSV/JSON processing, large generated outputs, exhaustive documentation, OCR, or subagent-heavy workflows; interrupt only when a better equivalent path exists. |
-| [`Programing-Intelligence-Skill`](https://github.com/Willis1214/Skills/tree/Programing-Intelligence-Skill) | Programing Intelligence Skill (`program-intelligence`) | `0.1.0` | Initial public release; no standalone `REVISION_HISTORY.md` in the source repo. | Generates evidence-bound Program Unit Intelligence Markdown for a final accepted program implementation, not intermediate debug scripts, temporary probes, QC helpers, or scratch implementations. | Use when the user says a program is satisfactory, accepted, ready, final, complete, or approved and asks Codex to extract durable intelligence for the final solution program. |
+| Red Team | [`Red-Team-Skill`](https://github.com/Willis1214/Skills/tree/Red-Team-Skill) | `1.0.0` | Initial public release, 2026-05-18. | Strict adversarial review for plans, prompts, workflows, PRDs, proposals, and decision material. | You need risks, hidden assumptions, boundary cases, logic gaps, or execution weaknesses surfaced before moving forward. |
+| PM Consultant | [`PM-Consultant-Skill`](https://github.com/Willis1214/Skills/tree/PM-Consultant-Skill) | `1.0.0` | Initial public release, 2026-05-18. | Structured product and architecture consulting across idea shaping, decision records, PRD, code design, QC, and retrospective stages. | You are turning a complex engineering idea into staged, reviewable product and technical decisions. |
+| Diff Output | [`Diff-Output-Skill`](https://github.com/Willis1214/Skills/tree/Diff-Output-Skill) | `1.0.0` | Initial public release, 2026-05-18. | A fixed comparison table for changes, before/after states, version differences, and update summaries. | You want a concise table showing `Type`, `Content`, `As is`, `To be`, and `Why`. |
+| Program Asset Builder | [`Program-Asset-Builder-Skill`](https://github.com/Willis1214/Skills/tree/Program-Asset-Builder-Skill) | `1.1.0` | `v1.1.0`, 2026-05-13: switched final review, usage, and revision-history outputs to Chinese-first HTML. `v1.0.0` was the initial public release. | Packages known source code into an OpenCode-compatible program asset with review report, usage guide, revision history, intelligence, card, validation, and release gate. | You have a final or known-good program and need a structured handoff/reuse package. |
+| Wechat Message | [`Wechat-Message-Skill`](https://github.com/Willis1214/Skills/tree/Wechat-Message-Skill) | `1.0.0` | Initial public release. | Sends a WeChat message through the visible macOS desktop WeChat app using a controlled keyboard workflow. | You need Codex to send a message to a named WeChat contact or group without private WeChat APIs or bridge services. |
+| Token Gate | [`Token-Gate-Skill`](https://github.com/Willis1214/Skills/tree/Token-Gate-Skill) | `0.1.0` | Initial public release candidate, 2026-05-05. | Prevents avoidable high-token work before large scans, long logs, large documents, generated artifacts, OCR, or subagent-heavy tasks. | A task may consume a lot of context and a cheaper path can preserve the same final result. |
+| Programing Intelligence | [`Programing-Intelligence-Skill`](https://github.com/Willis1214/Skills/tree/Programing-Intelligence-Skill) | `0.1.0` | Initial public release. | Extracts durable Program Unit Intelligence from a final accepted implementation. | A program is accepted or final, and you want reusable engineering knowledge captured for the finished solution, not temporary helper scripts. |
 
-## Maintenance Rules
+## Repository Layout
 
-- Keep `main` as the index branch.
-- Keep one skill repository per branch.
-- Use the original skill repository name as the branch name unless a later migration explicitly changes the naming rule.
-- Update this README whenever a skill branch version, revision history, purpose, or trigger condition changes.
+- `main`: catalog and usage overview.
+- One branch per skill package.
+- Branch names match the original public skill package names.
+
+## Maintenance
+
+When a skill changes, update its branch first, then update this catalog so readers can see the current version, revision history, purpose, and trigger conditions from `main`.
