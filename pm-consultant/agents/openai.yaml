@@ -1,4 +1,4 @@
 interface:
   display_name: "PM Consultant"
-  short_description: "Staged product and architecture consulting"
-  default_prompt: "Use $pm-consultant to guide a complex engineering idea through staged consultation, decision records, PRD, core code design, UAT/QC standards, and retrospective without jumping stages."
+  short_description: "PRD-first requirement and QC workflow"
+  default_prompt: "Use $pm-consultant to clarify requirements, build a user story map, confirm structured requirements, discuss QC checklist coverage, and output PRD Markdown, user-story-map HTML, and QC checklist Markdown without prescribing the implementation path."

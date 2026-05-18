@@ -1,9 +1,9 @@
 {
   "name": "pm-consultant",
   "display_title": "PM Consultant",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "release_date": "2026-05-18",
-  "description": "Codex skill for staged product-management and technical-architecture consultation, progressing complex engineering ideas through decision records, PRD, code design, UAT/QC standards, and retrospective.",
+  "description": "Codex skill for PRD-first requirement clarification and QC-gated delivery, producing PRD Markdown, user-story-map HTML, and QC checklist Markdown without prescribing implementation paths.",
   "language": [
     "en",
     "zh-CN"
@@ -11,21 +11,24 @@
   "source_skill_path": "/Users/lizhendong/.codex/skills/pm-consultant",
   "repository": {
     "owner": "Willis1214",
-    "requested_name": "PM Consultant",
-    "repo_slug": "PM-Consultant-Skill",
+    "repo": "Skills",
+    "branch": "PM-Consultant-Skill",
     "visibility": "public"
   },
   "skill_files": [
     "pm-consultant/SKILL.md",
     "pm-consultant/agents/openai.yaml",
-    "pm-consultant/references/stage-1-consulting.md",
-    "pm-consultant/references/stage-2-prd.md",
-    "pm-consultant/references/stage-3-code-design.md",
-    "pm-consultant/references/stage-4-uat-qc.md",
-    "pm-consultant/references/stage-5-retrospective.md"
+    "pm-consultant/references/workflow.md",
+    "pm-consultant/references/requirement-clarification.md",
+    "pm-consultant/references/confirmation-summary-template.md",
+    "pm-consultant/references/prd-template.md",
+    "pm-consultant/references/user-story-map-template.html",
+    "pm-consultant/references/qc-checklist-template.md",
+    "pm-consultant/references/final-output-contract.md"
   ],
   "documentation": [
-    "README.md"
+    "README.md",
+    "REVISION_HISTORY.md"
   ],
   "license": "UNLICENSED"
 }
