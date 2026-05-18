@@ -1,0 +1,4 @@
+interface:
+  display_name: "HTML Creator"
+  short_description: "Create decision-ready HTML pages"
+  default_prompt: "Use $html-creator to turn this material into a standalone decision-ready HTML page with clear structure, evidence tiers, risks, diagrams or flows when useful, and next actions."

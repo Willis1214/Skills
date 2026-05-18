@@ -1,39 +1,52 @@
-# Skills
+# HTML Creator
 
-Public Codex skills maintained by Willis.
+## English
 
-Each branch in this repository is a standalone skill package. Open the branch for the skill you need, then use the folder in that branch as the installable skill source.
+HTML Creator is a Codex skill for creating standalone, decision-ready HTML artifacts from Markdown drafts, research notes, reports, PRDs, code-review findings, market briefs, and evidence-heavy material. It treats HTML as the presentation and decision layer while keeping source Markdown, JSON, CSV, or notes as the evidence layer when those sources already exist.
 
-## How To Use
+## What It Does
 
-1. Choose a skill from the table below.
-2. Open its branch.
-3. Review the branch README and `manifest.json`.
-4. Copy or install the skill folder into your Codex skills directory.
+- Selects a page archetype such as decision brief, visual PRD, evidence report, status report, or review page.
+- Turns flat source material into scannable sections, tables, evidence tiers, risks, and next actions.
+- Adds a diagram layer for flows, state transitions, architecture maps, data movement, dependency maps, and screen journeys when prose would be too flat.
+- Prefers self-contained HTML with inline CSS and offline-safe behavior.
+- Preserves diagram source text when generated from Mermaid or another diagram DSL.
 
-The `main` branch is only the catalog. Skill source files live in the individual branches.
+## When To Use
 
-## Skill Catalog
+Use this skill when the user asks for a local HTML report, decision page, visual PRD, high-density review artifact, evidence report, or workflow/architecture explanation. Do not use it for production frontend app implementation, generic landing pages, PowerPoint, Word, PDF, or short text answers.
 
-| Skill | Branch | Version | Revision history | What it helps with | Use it when |
-| --- | --- | --- | --- | --- | --- |
-| Code Reviewer | [`Code-Reviewer-Skill`](https://github.com/Willis1214/Skills/tree/Code-Reviewer-Skill) | `1.0.0` | Initial public release, 2026-05-18. | Performs static-text release review for source code, diffs, version comparisons, and Codex skill files with risk levels, scoring, contract stability, engineering quality, and release decision. | You need a code release review without running local tools, tests, linters, interpreters, or environment probes. |
-| Code-QC-UAT | [`Code-QC-UAT-Skill`](https://github.com/Willis1214/Skills/tree/Code-QC-UAT-Skill) | `1.1.0` | `v1.1.0`, 2026-05-18: renamed to `code-qc-uat`, refocused on executable code functional QC/UAT, and simplified the final report path to `qc_uat/qc_uat_result.md`. | Runs executable QC/UAT for Python, Perl, Tcl, Shell, CLI tools, parsers, converters, and data processors using functional, boundary, and regression cases with evidence-backed gates. | You need to generate `qc_uat/` test artifacts, execute the real target program, and issue a strict `Pass`, `Fail`, or `Reject` release decision. |
-| Red Team | [`Red-Team-Skill`](https://github.com/Willis1214/Skills/tree/Red-Team-Skill) | `1.0.0` | Initial public release, 2026-05-18. | Strict adversarial review for plans, prompts, workflows, PRDs, proposals, and decision material. | You need risks, hidden assumptions, boundary cases, logic gaps, or execution weaknesses surfaced before moving forward. |
-| PM Consultant | [`PM-Consultant-Skill`](https://github.com/Willis1214/Skills/tree/PM-Consultant-Skill) | `1.1.0` | `v1.1.0`, 2026-05-18: reworked into a PRD-first, QC-gated requirement workflow. `v1.0.0` was the initial staged consulting release. | Clarifies requirements, user story maps, input/output contracts, boundaries, and QC checklists before implementation without prescribing the implementation path. | You need a confirmed PRD Markdown, user-story-map HTML, and QC checklist Markdown package before starting implementation. |
-| Diff Output | [`Diff-Output-Skill`](https://github.com/Willis1214/Skills/tree/Diff-Output-Skill) | `1.0.0` | Initial public release, 2026-05-18. | A fixed comparison table for changes, before/after states, version differences, and update summaries. | You want a concise table showing `Type`, `Content`, `As is`, `To be`, and `Why`. |
-| Program Asset Builder | [`Program-Asset-Builder-Skill`](https://github.com/Willis1214/Skills/tree/Program-Asset-Builder-Skill) | `1.1.0` | `v1.1.0`, 2026-05-13: switched final review, usage, and revision-history outputs to Chinese-first HTML. `v1.0.0` was the initial public release. | Packages known source code into an OpenCode-compatible program asset with review report, usage guide, revision history, intelligence, card, validation, and release gate. | You have a final or known-good program and need a structured handoff/reuse package. |
-| Wechat Message | [`Wechat-Message-Skill`](https://github.com/Willis1214/Skills/tree/Wechat-Message-Skill) | `1.0.0` | Initial public release. | Sends a WeChat message through the visible macOS desktop WeChat app using a controlled keyboard workflow. | You need Codex to send a message to a named WeChat contact or group without private WeChat APIs or bridge services. |
-| Token Gate | [`Token-Gate-Skill`](https://github.com/Willis1214/Skills/tree/Token-Gate-Skill) | `0.1.0` | Initial public release candidate, 2026-05-05. | Prevents avoidable high-token work before large scans, long logs, large documents, generated artifacts, OCR, or subagent-heavy tasks. | A task may consume a lot of context and a cheaper path can preserve the same final result. |
-| Memory Governor | [`Memory-Governor-Skill`](https://github.com/Willis1214/Skills/tree/Memory-Governor-Skill) | `0.1.0` | Initial public release, 2026-05-18. | Governs long-term command memory by detecting reusable user rules, asking for approval, and writing approved entries to memory. | A user wants durable preferences, prohibitions, shortcuts, or workflow rules remembered across future Codex tasks. |
-| Programing Intelligence | [`Programing-Intelligence-Skill`](https://github.com/Willis1214/Skills/tree/Programing-Intelligence-Skill) | `0.1.0` | Initial public release. | Extracts durable Program Unit Intelligence from a final accepted implementation. | A program is accepted or final, and you want reusable engineering knowledge captured for the finished solution, not temporary helper scripts. |
+## Install
 
-## Repository Layout
+Copy the `html-creator/` folder from this branch into your Codex skills directory, for example `~/.codex/skills/html-creator/`.
 
-- `main`: catalog and usage overview.
-- One branch per skill package.
-- Branch names match the original public skill package names.
+## Quality Checks
 
-## Maintenance
+This release was validated with the Codex skill quick validator. The updated instructions also require rendered diagram checks when a generated HTML page contains diagrams.
 
-When a skill changes, update its branch first, then update this catalog so readers can see the current version, revision history, purpose, and trigger conditions from `main`.
+## 中文
+
+HTML Creator 用于把 Markdown 草稿、研究笔记、报告、PRD、代码审查结果、市场简报和证据密集材料转换成单文件、可浏览、可决策的 HTML 展示物。它把 HTML 定位为展示层和决策层，不替代 Markdown、JSON、CSV 等源证据层。
+
+## 本版重点
+
+- 增加 Diagram Layer，支持流程图、状态图、系统架构、数据流、依赖图和页面旅程。
+- 明确 Mermaid / SVG 处理方式：优先离线安全、可检查、可保留源码。
+- 强化移动端可读性、图表渲染、标签可读性和无外部依赖检查。
+
+## 适用场景
+
+- 决策页、视觉 PRD、研究报告、状态报告、风险审查页。
+- Markdown 太线性，无法表达选项、证据、风险、流程或架构关系。
+- 需要在浏览器中阅读、归档或向管理层展示。
+
+## 不适用场景
+
+- 生产前端应用开发。
+- 通用营销落地页。
+- PPT、Word、PDF、Figma 专用输出。
+- 很短的一屏文字说明。
+
+## 发布说明
+
+v1.1.0 增加图形表达层，让 HTML 交付物可以承载流程、状态、架构和数据流，而不是只做简单排版。
