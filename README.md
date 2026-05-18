@@ -1,39 +1,47 @@
-# Skills
+# Skill Researcher
 
-Public Codex skills maintained by Willis.
+## English
 
-Each branch in this repository is a standalone skill package. Open the branch for the skill you need, then use the folder in that branch as the installable skill source.
+Skill Researcher is a Codex skill that acts as a research gate before creating, updating, installing, or publishing Codex skills. It checks local skills, public skill examples, GitHub candidates, and relevant methodology before any skill file is edited or any third-party skill is trusted.
 
-## How To Use
+## What It Does
 
-1. Choose a skill from the table below.
-2. Open its branch.
-3. Review the branch README and `manifest.json`.
-4. Copy or install the skill folder into your Codex skills directory.
+- Interrupts substantial skill creation or update work before implementation.
+- Compares local and public candidates instead of starting from a blank design.
+- Summarizes reusable methods, risks, quality checks, and recommended implementation boundaries.
+- Uses a fixed Chinese research-gate template so the user can confirm before edits begin.
+- Keeps `skill-creator` as the implementation skill, not the research gate itself.
 
-The `main` branch is only the catalog. Skill source files live in the individual branches.
+## When To Use
 
-## Skill Catalog
+Use this skill when you need to create a new Codex skill, substantially update an existing skill, install or evaluate a third-party skill, publish a skill, or add AGENTS rules related to skill creation. It is intentionally not required for narrow metadata-only edits.
 
-| Skill | Branch | Version | Revision history | What it helps with | Use it when |
-| --- | --- | --- | --- | --- | --- |
-| Code Reviewer | [`Code-Reviewer-Skill`](https://github.com/Willis1214/Skills/tree/Code-Reviewer-Skill) | `1.0.0` | Initial public release, 2026-05-18. | Performs static-text release review for source code, diffs, version comparisons, and Codex skill files with risk levels, scoring, contract stability, engineering quality, and release decision. | You need a code release review without running local tools, tests, linters, interpreters, or environment probes. |
-| Code-QC-UAT | [`Code-QC-UAT-Skill`](https://github.com/Willis1214/Skills/tree/Code-QC-UAT-Skill) | `1.1.0` | `v1.1.0`, 2026-05-18: renamed to `code-qc-uat`, refocused on executable code functional QC/UAT, and simplified the final report path to `qc_uat/qc_uat_result.md`. | Runs executable QC/UAT for Python, Perl, Tcl, Shell, CLI tools, parsers, converters, and data processors using functional, boundary, and regression cases with evidence-backed gates. | You need to generate `qc_uat/` test artifacts, execute the real target program, and issue a strict `Pass`, `Fail`, or `Reject` release decision. |
-| Red Team | [`Red-Team-Skill`](https://github.com/Willis1214/Skills/tree/Red-Team-Skill) | `1.0.0` | Initial public release, 2026-05-18. | Strict adversarial review for plans, prompts, workflows, PRDs, proposals, and decision material. | You need risks, hidden assumptions, boundary cases, logic gaps, or execution weaknesses surfaced before moving forward. |
-| PM Consultant | [`PM-Consultant-Skill`](https://github.com/Willis1214/Skills/tree/PM-Consultant-Skill) | `1.1.0` | `v1.1.0`, 2026-05-18: reworked into a PRD-first, QC-gated requirement workflow. `v1.0.0` was the initial staged consulting release. | Clarifies requirements, user story maps, input/output contracts, boundaries, and QC checklists before implementation without prescribing the implementation path. | You need a confirmed PRD Markdown, user-story-map HTML, and QC checklist Markdown package before starting implementation. |
-| Diff Output | [`Diff-Output-Skill`](https://github.com/Willis1214/Skills/tree/Diff-Output-Skill) | `1.0.0` | Initial public release, 2026-05-18. | A fixed comparison table for changes, before/after states, version differences, and update summaries. | You want a concise table showing `Type`, `Content`, `As is`, `To be`, and `Why`. |
-| Program Asset Builder | [`Program-Asset-Builder-Skill`](https://github.com/Willis1214/Skills/tree/Program-Asset-Builder-Skill) | `1.1.0` | `v1.1.0`, 2026-05-13: switched final review, usage, and revision-history outputs to Chinese-first HTML. `v1.0.0` was the initial public release. | Packages known source code into an OpenCode-compatible program asset with review report, usage guide, revision history, intelligence, card, validation, and release gate. | You have a final or known-good program and need a structured handoff/reuse package. |
-| Wechat Message | [`Wechat-Message-Skill`](https://github.com/Willis1214/Skills/tree/Wechat-Message-Skill) | `1.0.0` | Initial public release. | Sends a WeChat message through the visible macOS desktop WeChat app using a controlled keyboard workflow. | You need Codex to send a message to a named WeChat contact or group without private WeChat APIs or bridge services. |
-| Token Gate | [`Token-Gate-Skill`](https://github.com/Willis1214/Skills/tree/Token-Gate-Skill) | `0.1.0` | Initial public release candidate, 2026-05-05. | Prevents avoidable high-token work before large scans, long logs, large documents, generated artifacts, OCR, or subagent-heavy tasks. | A task may consume a lot of context and a cheaper path can preserve the same final result. |
-| Memory Governor | [`Memory-Governor-Skill`](https://github.com/Willis1214/Skills/tree/Memory-Governor-Skill) | `0.1.0` | Initial public release, 2026-05-18. | Governs long-term command memory by detecting reusable user rules, asking for approval, and writing approved entries to memory. | A user wants durable preferences, prohibitions, shortcuts, or workflow rules remembered across future Codex tasks. |
-| Programing Intelligence | [`Programing-Intelligence-Skill`](https://github.com/Willis1214/Skills/tree/Programing-Intelligence-Skill) | `0.1.0` | Initial public release. | Extracts durable Program Unit Intelligence from a final accepted implementation. | A program is accepted or final, and you want reusable engineering knowledge captured for the finished solution, not temporary helper scripts. |
+## Install
 
-## Repository Layout
+Copy the `skill-researcher/` folder from this branch into your Codex skills directory, for example `~/.codex/skills/skill-researcher/`.
 
-- `main`: catalog and usage overview.
-- One branch per skill package.
-- Branch names match the original public skill package names.
+## Quality Checks
 
-## Maintenance
+This release was validated with the Codex skill quick validator, the bundled Skill Researcher structure validator, and a prompt-input visibility check for `$skill-researcher`.
 
-When a skill changes, update its branch first, then update this catalog so readers can see the current version, revision history, purpose, and trigger conditions from `main`.
+## 中文
+
+Skill Researcher 是一个 Codex Skill 创建前置研究门。它在创建、重大更新、安装、发布 Skill 或新增 Skill 创建相关 AGENTS 规则之前，先检查本地 Skill、公开 Skill、GitHub 候选和相关方法论，再输出中文研究简报并等待用户确认。
+
+## 适用场景
+
+- 创建新的 Codex Skill。
+- 对已有 Skill 做行为级重大更新。
+- 评估或安装第三方 Skill。
+- 发布 Skill 到 GitHub。
+- 新增与 Skill 创建流程相关的 AGENTS 规则。
+
+## 不适用场景
+
+- 仅修改展示名、拼写、窄范围 metadata。
+- 用户明确要求跳过研究门。
+- 普通代码实现、文档修订或一次性分析任务。
+
+## 发布说明
+
+v1.1.0 修复了 frontmatter YAML 可解析性，加入明确 `$skill-researcher` 触发措辞，并保留中文二次确认门。
