@@ -1,0 +1,4 @@
+interface:
+  display_name: "Issue Analyse"
+  short_description: "现场还原、问题成立性、合同边界、Evidence 和责任归因分析"
+  default_prompt: "Use $issue-analyse to first reconstruct the case, identify missing Evidence, then assess issue existence, contract boundaries, attribution, and safe Chinese communication wording."
