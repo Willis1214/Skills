@@ -1,6 +1,40 @@
 # 调查方法论
 
-这些方法用于现场还原和归因前的思考。只在相关场景读取，不要把所有方法机械套用到每个问题。
+这些方法用于问题提出质疑、现场还原和归因前的思考。只在相关场景读取，不要把所有方法机械套用到每个问题。
+
+## Complaint Validity Challenge
+
+使用场景:
+- 客户、Requester、上游、下游或内部 reviewer 提出“这里有问题”。
+- 看到差异不一定等于合同意义上的 defect。
+- 需要先确认“问题是否真实成立”，再进入责任讨论。
+
+核心问题:
+- 谁提出问题？原话是什么？有没有截图、样例、复现步骤或交付包对比？
+- 提出方拿什么做基准：合同、spec、旧版本、当前 upstream、相关 project、行业惯例，还是主观期待？
+- 过去有没有同样现象：旧版本、旧 release package、旧 upstream、旧模板是否已经存在？
+- 现在有没有同样现象：当前 release、当前 upstream、当前环境是否仍可复现？
+- 相关 project 有没有同样现象：fully copy 来源项目、兄弟项目、同客户项目、同版本分支是否也存在？
+- 差异是否有实质影响：是否影响已承诺交付、客户使用、验收标准或安全/合规边界？
+
+待补证据:
+- 客户原话、截图、复现方式、合同条款、验收标准、影响范围。
+- 旧 release package、旧 upstream、历史验收记录、相关 project diff。
+- 当前 release package、当前 upstream、当前环境复现结果。
+
+可能结论:
+- 观察真实，但问题尚未成立。
+- 只能证明存在差异，还不能证明是 defect。
+- 问题成立，但归因仍未明确。
+- complaint 实际是 change request、preference 或 scope drift。
+
+高风险说法:
+- “客户抱怨不真实。”
+- “这不算 issue。”但没有说明 expected behavior 和影响。
+- “过去没人报，所以现在也不是问题。”
+
+稳妥表达:
+- “先把客户观察拆成事实层和合同缺陷层：当前只能证明存在 <difference>，是否构成 issue 还要看基准、历史、相关 project 和影响。”
 
 ## Legacy Issue Analysis
 
@@ -14,7 +48,7 @@
 - 是否存在 waiver、accepted deviation、known limitation 或 special handle？
 - 当前客户、场景、合同、验收标准是否不同？
 
-需补 Evidence:
+待补证据:
 - 旧 release package、旧 upstream、旧验收记录、release notes。
 - 老邮件、ticket、waiver、deviation list、known issue list。
 - 历史客户 complaint / no complaint 记录。
@@ -23,7 +57,7 @@
 - latent legacy issue 被新产品暴露。
 - 历史 accepted deviation 在当前项目未被继承或未被确认。
 - 当前投诉属于新场景触发，不是当前开发首次引入。
-- 缺少历史证据，只能作为 Contextual Evidence。
+- 缺少历史证据时，只能作为背景证据。
 
 高风险说法:
 - “十几年没人投诉，所以客户错了。”
@@ -45,7 +79,7 @@
 - release 时 frozen baseline 是哪个版本？
 - 当前 complaint 是对比哪个 baseline 提出的？
 
-需补 Evidence:
+待补证据:
 - baseline 定义、copy 指令、版本号、commit、变更记录。
 - release checklist、approval、frozen package、diff 报告。
 
@@ -60,33 +94,6 @@
 稳妥表达:
 - “需要先确认 release 时采用的 frozen baseline，再判断当前差异是执行偏差、baseline drift，还是 change-control gap。”
 
-## Complaint Validity Challenge
-
-使用场景:
-- 客户、Requester 或上游提出 complaint，但 expected behavior 未明确。
-- 看到差异不一定等于合同意义上的 defect。
-
-核心问题:
-- 客户看到的现象是否真实？
-- 客户依据的是合同、spec、旧版本、当前 upstream，还是主观期待？
-- 影响是否达到 issue 级别？
-- 是否属于 enhancement、preference、scope drift 或 late change？
-
-需补 Evidence:
-- 客户原话、截图、复现方式、合同条款、验收标准、影响范围。
-
-可能结论:
-- 观察真实，但 issue 尚未成立。
-- issue 成立，但归因仍未明确。
-- complaint 实际是 change request。
-
-高风险说法:
-- “客户抱怨不真实。”
-- “这不算 issue。”但没有说明 expected behavior 和影响。
-
-稳妥表达:
-- “客户观察到的 gap 需要先拆成 factual observation 和 contract-level defect 两层判断。”
-
 ## Waiver / Special Handle Search
 
 使用场景:
@@ -99,7 +106,7 @@
 - 当前项目是否继承该 exception？
 - exception 是否有到期、条件或替代方案？
 
-需补 Evidence:
+待补证据:
 - waiver、deviation approval、meeting minutes、customer sign-off、exception list。
 
 可能结论:
@@ -111,7 +118,7 @@
 - “以前都这样，所以这是默认同意。”
 
 稳妥表达:
-- “除非找到 waiver 或 special handle 记录，否则历史沉默只能算 Contextual Evidence，不能直接作为 approval。”
+- “除非找到 waiver 或 special handle 记录，否则历史沉默只能算背景证据，不能直接作为 approval。”
 
 ## Change Control Drift
 
@@ -125,7 +132,7 @@
 - 是否通知 release Owner 和 QA？
 - checklist 是否覆盖 change impact？
 
-需补 Evidence:
+待补证据:
 - change request、commit、review、approval、notification、release checklist。
 
 可能结论:
@@ -151,13 +158,13 @@
 - 谁 Informed 只需要被通知？
 - handoff contract 是否写清输入、输出、时间和验收方式？
 
-需补 Evidence:
+待补证据:
 - RACI、SOP、handoff checklist、邮件确认、ticket Owner、approval chain。
 
 可能结论:
 - 执行 Owner 与签核 Owner 不同。
 - 修复 Owner 与根因 Owner 不同。
-- 没有定义 Owner，属于 Process / Contract Gap。
+- 没有定义 Owner，属于流程 / 约定缺口。
 
 高风险说法:
 - “谁最后碰过就是谁负责。”
@@ -176,7 +183,7 @@
 - 谁拥有防复发流程？
 - 哪些 action 是止血，哪些 action 是预防？
 
-需补 Evidence:
+待补证据:
 - ownership map、代码/文件 Owner、流程 Owner、approval Owner、SOP Owner。
 
 可能结论:
@@ -188,4 +195,4 @@
 - “谁修就是谁的锅。”
 
 稳妥表达:
-- “修复 Owner 和 root cause Owner 要分开；当前先明确谁能关闭风险，再基于 Evidence 讨论根因归属。”
+- “修复 Owner 和 root cause Owner 要分开；当前先明确谁能关闭风险，再基于证据讨论根因归属。”

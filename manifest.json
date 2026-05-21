@@ -1,8 +1,8 @@
 {
   "name": "issue-analyse",
   "display_name": "Issue Analyse",
-  "version": "1.0.0",
-  "description": "Evidence-first issue reconstruction, issue-existence review, contract-boundary analysis, attribution, and Chinese communication framing.",
+  "version": "1.1.0",
+  "description": "Proof-first complaint challenge, issue-existence review, case reconstruction, contract-boundary analysis, attribution, and Chinese communication framing.",
   "repository": "https://github.com/Willis1214/Skills",
   "branch": "Issue-Analyse-Skill",
   "skill_path": "issue-analyse/SKILL.md",

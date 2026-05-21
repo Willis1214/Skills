@@ -1,92 +1,105 @@
-# Attribution Rubric
+# 归因判断规则
 
-Use this rubric when assigning responsibility, objective causes, or Confidence.
+用于判断责任、客观原因和 `结论把握度`。
 
-## Decision Order
+## 判断顺序
 
-1. Existence: Does the alleged issue exist as a deviation from a defined expectation?
-2. Contract: Which explicit contract, boundary, or acceptance criterion applies?
-3. Compliance: Who did or did not follow the contract?
-4. Causality: Which event or missing input materially caused the observed impact?
-5. Evidence: Which facts prove or weaken that attribution?
-6. Confidence: How strong is the conclusion?
+1. 问题提出质疑: 反馈是否证明当前真的有问题，还是只能证明有人提出了疑问？
+2. 问题成立性: alleged issue 是否偏离了已定义的预期？
+3. 合同 / 约定: 哪个明确合同、边界或验收标准适用？
+4. 履约情况: 谁遵守或没有遵守该约定？
+5. 因果关系: 哪个事件或缺失输入实质造成了影响？
+6. 证据: 哪些事实支持或削弱该归因？
+7. 结论把握度: 结论强度有多高？
 
-Do not skip existence or contract review. Many disputes are not defects; they are undefined expectations, changed scope, or missing acceptance criteria.
+不要跳过问题成立性和合同 / 约定审查。很多争议不是 defect，而是预期未定义、范围变化或验收标准缺失。
 
-## Issue Existence Tests
+## 问题提出质疑
 
-Classify as `Issue Not Established` when one or more apply:
+出现以下情况时，归类为 `问题尚未成立`:
 
-- expected behavior is absent or ambiguous;
-- actual behavior matches documented behavior;
-- reported impact is outside agreed scope;
-- severity is below the issue threshold;
-- reproduction is absent and no direct Evidence exists;
-- the request is better classified as enhancement, preference, or late scope change;
-- the claim depends on outdated Evidence.
+- 报告无法复现，或只基于单一且不清晰的观察；
+- 旧 release、旧 upstream 或复制来源项目已有同样行为，且当前合同没有要求改变；
+- 相关 project 也有同样行为，且没人说明当前项目为什么必须不同；
+- 提出方拿后来的新期待、偏好或范围变化做比较，而不是拿已确认 baseline 做比较；
+- 缺少当前证据、影响证据或已确认的评价标准。
 
-Classify as `Issue Established` only when there is a concrete expected-vs-actual gap with material impact.
+事实差异存在但合同含义未证明时，归类为 `只能证明存在差异`。
 
-## Contract Tests
+## 问题成立性测试
 
-Use `Contract Violation` only when all are true:
+出现以下情况时，归类为 `问题尚未成立`:
 
-- a contract existed before the event;
-- the responsible party had access to the contract;
-- the contract covered the disputed condition;
-- the party's action or omission violated it;
-- the violation materially contributed to the impact.
+- 应然状态缺失或含糊；
+- 实际行为符合已记录行为；
+- 被报告的影响不在约定范围内；
+- 严重程度未达到 issue 门槛；
+- 没有复现，也没有直接证据；
+- 更适合归类为 enhancement、preference 或 late scope change；
+- 结论依赖过期证据。
 
-Use `Contract Gap` when expectations were undefined, ambiguous, conflicting, or changed after execution.
+只有存在明确的应然 / 实际差距，且有实质影响时，才归类为 `问题成立`。
 
-Use `Contract Complied` when the party followed the defined contract even if the outcome disappointed someone.
+## 合同 / 约定测试
 
-## Evidence Strength
+只有同时满足以下条件，才使用 `违反约定`:
 
-| Strength | Criteria | Confidence Ceiling |
+- 事件发生前已经存在约定；
+- 责任方能看到并理解该约定；
+- 该约定覆盖争议条件；
+- 该方的行为或遗漏违反了该约定；
+- 该违反行为实质造成了影响。
+
+当预期未定义、含糊、互相冲突或执行后才变化时，使用 `约定缺口`。
+
+即使结果让某方不满意，只要某方遵守了已定义约定，就归类为 `已遵守约定`。
+
+## 证据强度
+
+| 强度 | 判断标准 | 结论把握度上限 |
 | --- | --- | --- |
-| `Direct` | Primary record proves the fact: ticket, log, commit, test result, timestamp, accepted spec, written decision | High |
-| `Corroborating` | Multiple independent signals align, but no single primary record proves the whole chain | Medium-High |
-| `Contextual` | Background supports plausibility only | Medium |
-| `Weak` | Memory, hearsay, ambiguous observation, single non-primary signal | Low |
-| `Missing` | Required proof is absent | Unknown |
+| `直接证据` | 一手记录能证明事实，例如 ticket、log、commit、测试结果、时间戳、已接受 spec、书面决定 | 高 |
+| `相互印证` | 多个独立信号方向一致，但没有单一一手记录证明完整链条 | 中到高 |
+| `背景证据` | 只能支持合理性，不能单独证明原因 | 中 |
+| `弱证据` | 记忆、转述、含糊观察、单一非一手信号 | 低 |
+| `缺失` | 必要证据不存在或未取得 | 暂不能判断 |
 
-Never assign `High` Confidence from weak or missing Evidence.
+不得用弱证据或缺失证据得出高把握度结论。
 
-## Attribution Types
+## 归因类型
 
-`Self`
-: The user's side had a defined responsibility and failed it.
+`我方责任`
+: 我方有明确定义的责任，但没有履行、漏掉必要步骤，或引入了问题。
 
-`Other Owner`
-: Another owner had a defined responsibility and failed it.
+`其他 Owner 责任`
+: 另一个人、团队或系统 Owner 有明确定义的责任，但没有履行。
 
-`Upstream Dependency`
-: Required upstream input, service, data, permission, or decision was absent, wrong, late, or changed.
+`上游依赖`
+: 必需的上游输入、服务、数据、权限、时间点或决定缺失、错误、延迟或发生变化。
 
-`Process / Contract Gap`
-: The system allowed ambiguity: no owner, no acceptance criteria, no review gate, no escalation path, or conflicting instructions.
+`流程 / 约定缺口`
+: 流程本身留下了空白，例如没有 Owner、没有验收标准、没有 review gate、没有升级路径或指令互相冲突。
 
-`Environment / External`
-: The issue materially depended on runtime, network, third-party service, platform policy, market, hardware, or other uncontrollable condition.
+`环境 / 外部因素`
+: 问题实质依赖 runtime、网络、第三方服务、平台策略、市场、硬件或其他不可控条件。
 
-`Requester / Scope Drift`
-: The requester's later judgment used requirements that were not agreed before execution.
+`需求方 / 范围漂移`
+: 需求方后续使用了执行前没有确认过的要求来评价结果。
 
-`Evidence Gap`
-: The available Evidence does not support safe attribution.
+`证据缺口`
+: 现有证据不足以安全归因。
 
-## Confidence Labels
+## 结论把握度
 
-- `High`: direct Evidence plus clear contract and causal link.
-- `Medium`: good Evidence but some missing contract or causality detail.
-- `Low`: plausible attribution but Evidence is weak or incomplete.
-- `Unknown`: attribution would be speculative.
+- `高`: 有直接证据、清晰约定和明确因果链。
+- `中`: 有较好证据，但合同边界或因果细节仍缺一部分。
+- `低`: 归因方向合理，但证据弱或不完整。
+- `暂不能判断`: 继续归因会变成猜测。
 
-## Red Lines
+## 红线
 
-- Do not infer motive.
-- Do not use "everyone knows" as Evidence.
-- Do not treat silence as approval unless the contract says silence means approval.
-- Do not blame an owner for missing information they were never required to provide.
-- Do not hide self-side responsibility; downgrade the communication instead.
+- 不推断动机。
+- 不把“大家都知道”当成证据。
+- 除非约定明确写了沉默等于同意，否则不要把沉默当成批准。
+- 不把从未要求某个 Owner 提供的信息缺失归责给该 Owner。
+- 如果证据指向我方责任，不隐藏；改用更稳妥的沟通方式。
