@@ -1,4 +1,4 @@
 interface:
   display_name: "Issue Analyse"
-  short_description: "先质疑问题是否成立，再做现场还原、合同边界和责任归因分析"
-  default_prompt: "Use $issue-analyse to first challenge whether the reported problem is established, then reconstruct the case, identify missing proof, assess contract boundaries, attribution, and safe Chinese communication wording."
+  short_description: "先质疑问题是否成立，再用破局策略做现场还原、合同边界和责任归因分析"
+  default_prompt: "Use $issue-analyse to first challenge whether the reported problem is established, select a breakthrough strategy for disputed or stuck cases, then reconstruct the case, identify missing proof, assess contract boundaries, attribution, and safe Chinese communication wording."

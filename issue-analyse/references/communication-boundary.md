@@ -5,6 +5,7 @@ Use this reference when the user asks how to explain an issue to another person,
 ## Safe Communication Principles
 
 - Start by separating the raised complaint from the proven issue.
+- Before accepting a local fix or blame frame, state the selected investigation strategy when the case is disputed or stuck.
 - Say what happened, when, and based on which proof.
 - Tie responsibility to contract, Owner boundary, RACI role, handoff, or acceptance criteria.
 - Separate cause from remediation.
@@ -31,6 +32,10 @@ Use this reference when the user asks how to explain an issue to another person,
 - `当前证据支持的判断是...`
 - `目前只能证明有人提出了这个问题，尚未证明它构成交付缺陷。`
 - `需要先确认过去版本、当前版本和相关 project 是否都有同样现象。`
+- `如果按这个判断逻辑成立，同一 baseline / 相关 project / 上下游链路也应当出现类似影响，需要先做一致性对比。`
+- `先确认判定它为 issue 的底层基准是什么；发生了现象不等于合同意义上已经判错。`
+- `我方系统长期稳定只能作为排查顺序依据，仍需要用监控、回归和输入日志来证明。`
+- `这个 case 可能已经超出单点处理边界，需要把修复 Owner、根因 Owner 和防复发 Owner 拆开看。`
 - `从已定义的接口/验收标准看...`
 - `该点更像是合同/范围未定义，而不是执行偏差。`
 - `这个现象需要先补齐证据，暂时不能归因。`
@@ -42,6 +47,9 @@ Use this reference when the user asks how to explain an issue to another person,
 
 - `这肯定不是我的问题` when proof is incomplete.
 - `都是他们的问题` without contract and proof.
+- `我们系统十几年没出过问题，所以一定不是我们。`
+- `如果这个点有问题，那所有地方都该坏。` without naming the real shared baseline or dependency.
+- `这个是系统问题，大家一起解决。` when a clear local contract violation already exists.
 - `他们不专业 / 不负责 / 没能力`.
 - `我猜是...` in stakeholder-facing wording.
 - `这个不算 issue` without defining expected behavior and impact.

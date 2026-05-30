@@ -1,15 +1,17 @@
 ---
 name: issue-analyse
-description: Proof-first complaint challenge, issue-existence review, case reconstruction, contract-boundary analysis, attribution, and communication framing. Use when the user asks to discuss an issue, challenge whether a reported issue really exists, restore what happened, identify missing proof, analyze responsibility boundaries, determine whether the cause belongs to another owner, upstream dependency, environment, process, contract gap, or evidence gap, prepare objective wording, or reason through "is this my fault / not my issue / external cause / contract not violated" scenarios. Do not use for pure source-code release review, executable QC/UAT, generic risk review, legal advice, HR discipline, or requests to fabricate blame.
+description: Proof-first complaint challenge, issue-existence review, breakthrough strategy selection, case reconstruction, contract-boundary analysis, attribution, and communication framing. Use when the user asks to discuss an issue, challenge whether a reported issue really exists, restore what happened, identify missing proof, break out of a disputed or stuck investigation, analyze responsibility boundaries, determine whether the cause belongs to another owner, upstream dependency, environment, process, contract gap, or evidence gap, prepare objective wording, or reason through "is this my fault / not my issue / external cause / contract not violated" scenarios. Do not use for pure source-code release review, executable QC/UAT, generic risk review, legal advice, HR discipline, or requests to fabricate blame.
 ---
 
 # Issue Analyse
 
 ## Purpose
 
-Guide issue discussions toward objective, proof-backed issue challenge, reconstruction, and attribution.
+Guide issue discussions toward objective, proof-backed issue challenge, breakthrough strategy selection, reconstruction, and attribution.
 
-The skill first challenges whether the complaint or feedback actually proves a problem, then restores the factual scene, then tests whether the event should be treated as an issue, then checks contract and proof boundaries, and only then assigns attribution and communication wording. It must not fabricate proof, personalize blame, or force a conclusion that the available facts do not support.
+The skill first challenges whether the complaint or feedback actually proves a problem, then restores the factual scene, then selects a suitable breakthrough strategy for disputed or stuck cases, then tests whether the event should be treated as an issue, then checks contract and proof boundaries, and only then assigns attribution and communication wording. It must not fabricate proof, personalize blame, or force a conclusion that the available facts do not support.
+
+Default operating discipline: do not accept `改代码`, `查 Bug`, or `我方先背锅` as the first move just because someone raised an issue. First run complaint challenge, scene reconstruction, breakthrough strategy selection, and evidence gating. Only after that decide whether the next action is local fix, upstream proof request, cross-owner review, process repair, or safe communication.
 
 Default output should use Chinese labels. Use Chinese wording for user-facing fields such as `证据`, `待补证据`, `结论把握度`, `合同边界`, and `归因类型`. Keep English only for technical or workplace terms that are clearer as terms, such as `Owner`, `RACI`, `baseline`, `waiver`, `special handle`, `scope drift`, `release gate`, `ticket`, `commit`, and `checklist`.
 
@@ -83,7 +85,25 @@ Common hypothesis types include:
 
 Mark each hypothesis as `待验证`, `较可能`, `已排除`, or `证据不足`. Do not collapse the case into one blame target before competing hypotheses are tested.
 
-### 4. 问题成立性审查
+### 4. 破局策略选择门
+
+Before accepting a local fix or blame target, decide whether the situation needs one of these breakthrough strategies. Use only strategies supported by the facts, system context, and proof strength.
+
+| 方法 | 使用场景 | 最小动作 | 风险边界 |
+| --- | --- | --- | --- |
+| `冲突扩大法` | A single alleged issue traps the user in local self-defense. | Temporarily assume the other party's logic is true, then deduce what other modules, releases, sibling projects, or upstream/downstream steps should also fail. Ask why those expected systemic effects are absent or unreported. | Requires real system architecture context. Do not invent affected areas or use loose analogies as proof. |
+| `底层溯源法` | The investigation is stuck on a surface error, inherited judgment, or "it happened, so it must be wrong" logic. | Keep asking why until reaching the actual judgment baseline: spec, contract, interface rule, physical/industry constraint, acceptance criterion, or system invariant. Challenge whether the other party's basis is valid in this scenario. | Stop when the next "why" becomes unsupported speculation or philosophical arguing. |
+| `归因防御策略` | A mature, stable system is blamed after a sudden alarm or new failure. | Treat new external variables, upstream changes, abnormal inputs, environment shifts, and release/control changes as first-class hypotheses. Also state what self-side invariants, monitors, or regression proof are needed to defend the mature-system assumption. | This is not a license to shift blame. It only applies when the user's system is well understood and has stability evidence. |
+| `困境转化法` | The case is a corner / edge / special case that exceeds one module or one person's handling boundary. | Reframe it as a system-evolution, design-boundary, or process-gap issue; propose a cross-owner review with fix owner, root-cause owner, and prevention owner separated. | Requires upward or lateral coordination. Do not escalate before showing why the issue exceeds a local action boundary. |
+
+Recommended mapping:
+
+- If the issue is newly raised and unproven, start with `冲突扩大法` plus complaint challenge.
+- If the case is stuck after evidence collection, use `底层溯源法` to test the judgment baseline.
+- If a long-running mature system is suddenly blamed, use `归因防御策略` with monitoring and regression proof.
+- If the conclusion points to a corner case or systemic gap, use `困境转化法` instead of solo debugging.
+
+### 5. 问题成立性审查
 
 After the complaint challenge and scene reconstruction are sufficient, test whether the alleged issue exists.
 
@@ -100,7 +120,7 @@ Analyze from angles that can overturn issue existence:
 
 If existence is not proven, classify as `问题尚未成立`, not as someone else's fault.
 
-### 5. 合同 / 约定边界
+### 6. 合同 / 约定边界
 
 Then analyze whether a contract exists and whether it was violated.
 
@@ -122,7 +142,7 @@ For each relevant party, separate:
 
 Do not treat a vague expectation as a violated contract. If the contract is unclear, classify the cause as `约定缺口` or `证据缺口`.
 
-### 6. 证据链
+### 7. 证据链
 
 Build a full proof chain before attribution.
 
@@ -138,7 +158,7 @@ Classify proof strength:
 
 Every attribution must cite proof. If proof is weak, say so and lower `结论把握度`.
 
-### 7. 归因矩阵
+### 8. 归因矩阵
 
 Classify contributing factors without collapsing everything into one blame target:
 
@@ -161,7 +181,7 @@ Use RACI when useful:
 
 Distinguish ownership of the event from ownership of the fix. A party may own remediation without being the root cause.
 
-### 8. 根因推理
+### 9. 根因推理
 
 Use 5 Whys only while proof supports each step.
 
@@ -169,7 +189,7 @@ Allow multiple contributing causes. Stop the chain when the next step becomes sp
 
 Do not overfit to the user's preferred conclusion. If the strongest proof points back to the user's side, state that directly and suggest a safer communication route.
 
-### 9. 沟通边界
+### 10. 沟通边界
 
 Produce wording that is objective and usable.
 
@@ -190,7 +210,7 @@ When the issue is sensitive, political, customer-facing, or likely to be forward
 
 When attribution is complex or disputed, read `references/attribution-rubric.md` before assigning `结论把握度`.
 
-When the issue requires deeper issue-reconstruction methods, such as legacy issues, historical acceptance, baseline drift, dependency expectations, or complaint validity challenges, read `references/investigation-methods.md`.
+When the issue requires deeper issue-reconstruction or breakthrough methods, such as legacy issues, historical acceptance, baseline drift, dependency expectations, complaint validity challenges, conflict expansion, root-baseline tracing, mature-system attribution defense, or corner-case transformation, read `references/investigation-methods.md`.
 
 ## Hard Boundaries
 
@@ -198,5 +218,7 @@ When the issue requires deeper issue-reconstruction methods, such as legacy issu
 - Do not help falsely assign known self-side responsibility to others.
 - Do not output personal attacks or defamatory claims.
 - Do not convert weak proof into firm blame.
+- Do not use `归因防御策略` as unsupported blame shifting; it must be paired with self-side stability evidence and external-variable proof requests.
+- Do not use `冲突扩大法` to manufacture hypothetical failures; only derive impacts that logically follow from the other party's stated premise.
 - Do not give legal or HR disciplinary advice; provide evidence-organization and communication-risk framing only.
 - Do not claim an issue is closed unless the complaint challenge, scene reconstruction, issue existence, contract boundary, proof chain, attribution, and conclusion certainty are all explicit.
