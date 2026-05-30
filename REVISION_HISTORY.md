@@ -2,6 +2,14 @@
 
 ## English
 
+### 1.3.0 - 2026-05-30
+
+- Realigned the core workflow for customer issue support rather than internal defensive analysis.
+- Moved contract and evidence review before delivery-issue judgment, using POR, SOP, Email, QC, Policy, handoff agreement, release checklist, waiver, and proof strength.
+- Reframed breakthrough methods as post-evidence support strategies instead of pre-evidence defense moves.
+- Added explicit output fields for `对外解决方案` and `双赢路径`.
+- Clarified that the user should support the customer while not accepting responsibility that is not supported by evidence.
+
 ### 1.2.0 - 2026-05-30
 
 - Added a breakthrough strategy gate before final issue-existence and attribution decisions.
@@ -26,6 +34,14 @@
 - Added `references/investigation-methods.md` for legacy issue analysis, baseline / delta analysis, complaint validity checks, waiver / special handle search, change control drift, RACI / handoff boundaries, and fix-owner versus root-cause-owner separation.
 
 ## 中文
+
+### 1.3.0 - 2026-05-30
+
+- 将核心 workflow 纠偏为客户 issue support，而不是内部防御式分析。
+- 将合同和证据审查前置到交付问题判断之前，明确使用 POR、SOP、Email、QC、Policy、handoff agreement、release checklist、waiver 和 proof strength。
+- 将四种破局方法重新定位为证据审查之后的 support path 选择，而不是证据审查前的防御动作。
+- 增加 `对外解决方案` 和 `双赢路径` 输出字段。
+- 明确使用者应支持客户推进问题，但不能承担证据不支持的责任。
 
 ### 1.2.0 - 2026-05-30
 

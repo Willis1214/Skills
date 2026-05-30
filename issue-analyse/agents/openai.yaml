@@ -1,4 +1,4 @@
 interface:
   display_name: "Issue Analyse"
-  short_description: "先质疑问题是否成立，再用破局策略做现场还原、合同边界和责任归因分析"
-  default_prompt: "Use $issue-analyse to first challenge whether the reported problem is established, select a breakthrough strategy for disputed or stuck cases, then reconstruct the case, identify missing proof, assess contract boundaries, attribution, and safe Chinese communication wording."
+  short_description: "面向客户 issue support：先质疑问题、还原现场、审证据，再判断交付问题、选择支持策略和归因沟通"
+  default_prompt: "Use $issue-analyse for customer issue support: first challenge whether the reported problem is established, reconstruct the case, review POR/SOP/Email/QC/Policy/handoff/release/waiver evidence, judge whether it is a delivery issue, select a win-win support strategy, then prepare attribution, responsibility boundaries, and safe Chinese external-facing solution wording."
