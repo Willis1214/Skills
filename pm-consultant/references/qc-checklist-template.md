@@ -32,12 +32,13 @@ Use this Markdown template for `output/<project_slug>_qc_checklist.md`.
 | QC-002 | Input | Input contract is complete | All required inputs, format, source, and missing-input behavior are defined | PRD + story map review | Input table | Blocker | TBD |  |
 | QC-003 | Output | Output contract is complete | Final output artifacts, fields, format, and location are defined | PRD review | Output table | Blocker | TBD |  |
 | QC-004 | User Story | Main user journey is covered | Primary role, activity, task, and system response are mapped | HTML story map review | Story map section | Blocker | TBD |  |
-| QC-005 | Boundary | In-scope and out-of-scope are explicit | PRD separates required behavior from non-goals | PRD review | Boundary table | Blocker | TBD |  |
-| QC-006 | Condition | Conditional branches are covered | Key condition triggers, behavior, feedback, and QC check are defined | HTML story map review | Condition architecture table | Warning | TBD |  |
-| QC-007 | Exception | Edge cases are covered | Known failure modes and expected handling are listed | PRD + story map review | Exception table | Warning | TBD |  |
+| QC-005 | Boundary | In-scope and out-of-scope are explicit | PRD separates required behavior from non-goals and covers logical, interaction, and physical-world boundaries where applicable | PRD review | Boundary table | Blocker | TBD |  |
+| QC-006 | Condition | Conditional branches are covered | Key condition triggers, behavior, feedback, QC check, logical mutual exclusion, and chain reactions are defined | HTML story map review | Condition architecture table | Warning | TBD |  |
+| QC-007 | Exception | Edge cases are covered | Known failure modes, hidden sharing risk, overfitting risk, and expected handling are listed where applicable | PRD + story map review | Exception table | Warning | TBD |  |
 | QC-008 | Implementation Freedom | PRD avoids unnecessary implementation prescription | Technical path is constrained only where user gave hard constraints | PRD review | Constraint table | Warning | TBD |  |
 | QC-009 | Security | Permission, privacy, and data risks are covered | Sensitive data, file writes, network, and permission assumptions are stated | PRD review | Security notes | Blocker | TBD |  |
 | QC-010 | Validation | Acceptance can be verified | Every key objective has a verification method and evidence requirement | Checklist review | This checklist | Blocker | TBD |  |
+| QC-011 | Red Team Gate | High-risk review findings are resolved before final output | No unresolved `High` Red Team findings remain; accepted residual `Medium` / `Low` risks are visible in PRD or QC | Red Team review + remediation readback | Red Team issue table and remediation confirmation | Blocker | TBD |  |
 
 ## 4. Open QC Questions
 
@@ -49,5 +50,5 @@ Use this Markdown template for `output/<project_slug>_qc_checklist.md`.
 
 - QC should constrain outcomes, evidence, and release gates, not implementation style.
 - Use `Blocker` sparingly but strictly for contract, safety, data integrity, or core user journey failures.
+- Treat unresolved `High` Red Team findings as `Blocker` issues.
 - Do not mark `Pass` unless evidence is available.
-

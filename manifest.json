@@ -1,9 +1,9 @@
 {
   "name": "pm-consultant",
   "display_title": "PM Consultant",
-  "version": "1.1.0",
-  "release_date": "2026-05-18",
-  "description": "Codex skill for PRD-first requirement clarification and QC-gated delivery, producing PRD Markdown, user-story-map HTML, and QC checklist Markdown without prescribing implementation paths.",
+  "version": "1.2.0",
+  "release_date": "2026-06-03",
+  "description": "Codex skill for PRD-first requirement clarification, QC-gated delivery, and Red Team review before final PRD, user-story-map, and QC checklist outputs.",
   "language": [
     "en",
     "zh-CN"

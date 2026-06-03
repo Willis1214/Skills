@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Before producing final artifacts, summarize all confirmed information and ask the user for explicit confirmation.
+Before entering QC checklist discussion, Red Team review, and final artifact generation, summarize all confirmed information and ask the user for explicit confirmation.
 
 ## Required Output
 
@@ -51,12 +51,11 @@ Before producing final artifacts, summarize all confirmed information and ask th
 
 ## 请确认
 
-请确认以上内容是否可以作为 PRD / 用户故事地图 / QC Checklist 的生成依据。确认后进入 QC Checklist 讨论；如有修改，请直接指出需要变更的字段。
+请确认以上内容是否可以作为 QC Checklist 讨论、Red Team 审核和最终 PRD / 用户故事地图 / QC Checklist 的生成依据。确认后进入 QC Checklist 讨论；如有修改，请直接指出需要变更的字段。
 ```
 
 ## Rules
 
 - The summary is a gate, not a final PRD.
 - Explicitly separate confirmed facts from `TBD`.
-- Do not proceed to final output until the user confirms or edits this summary.
-
+- Do not proceed to QC checklist discussion, Red Team review, or final output until the user confirms or edits this summary.

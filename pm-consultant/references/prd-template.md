@@ -64,7 +64,16 @@ Use this Markdown template for `output/<project_slug>_prd.md`.
 | 验收项 | 标准 | 验证方式 |
 | --- | --- | --- |
 
-## 11. 待确认问题
+## 11. Red Team Gate Summary
+
+| 项目 | 内容 |
+| --- | --- |
+| Red Team 状态 | Passed / Blocked / TBD |
+| High 风险处理结果 | None / Remediated / Blocked |
+| Medium / Low 残余风险 | TBD |
+| 用户确认 | Confirmed / TBD |
+
+## 12. 待确认问题
 
 | 编号 | 问题 | 影响范围 | 优先级 |
 | --- | --- | --- | --- |
@@ -74,5 +83,5 @@ Use this Markdown template for `output/<project_slug>_prd.md`.
 
 - Use only confirmed content plus explicit `TBD`.
 - Do not include implementation path unless it is a confirmed requirement.
+- Do not mark Red Team 状态 as `Passed` unless the step 5 Red Team gate passed.
 - Keep identifiers, filenames, CLI flags, API names, and technical labels exactly as provided.
-

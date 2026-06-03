@@ -15,7 +15,7 @@ Clarify the requirement contract before any PRD or implementation work.
 | User jobs | What users need to accomplish | Confirmed / TBD |
 | Input | Files, data, user actions, APIs, prompts, or manual context entering the system | Confirmed / TBD |
 | Output | Final artifacts, UI states, files, reports, messages, or system actions | Confirmed / TBD |
-| Boundary | What the system must include | Confirmed / TBD |
+| Boundary | What the system must include, including logical, interaction, and physical-world boundaries when applicable | Confirmed / TBD |
 | Non-goals | What the system must not do | Confirmed / TBD |
 | Runtime environment | OS, local/remote context, permissions, network, enterprise restrictions | Confirmed / TBD |
 | Constraints | Required formats, tool limits, compliance, security, deadlines, compatibility | Confirmed / TBD |
@@ -30,6 +30,8 @@ Recommended first questions:
 1. Is this a new system/tool/workflow, or an iteration of an existing one?
 2. What are the required inputs and final outputs?
 3. Who is the primary user, and what job do they need to complete?
+
+If the solution involves human-machine, human-human, or machine-machine interaction, also confirm physical-world boundary conditions such as logical mutual exclusion, chain reactions, hidden sharing, and overfitting risk. Keep unknown boundary items as `TBD`.
 
 ## Output Pattern
 
@@ -60,4 +62,4 @@ Recommended first questions:
 - Do not ask everything at once.
 - Do not recommend technology before input/output and user jobs are clear.
 - Do not convert assumptions into confirmed requirements.
-
+- Do not treat edge cases as only code-path exceptions; include interaction and physical-world boundary conditions when the workflow crosses people, devices, organizations, or automated agents.
