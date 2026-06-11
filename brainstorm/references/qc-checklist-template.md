@@ -39,6 +39,7 @@ Use this Markdown template for `output/<project_slug>_qc_checklist.md`.
 | QC-009 | Security | Permission, privacy, and data risks are covered | Sensitive data, file writes, network, and permission assumptions are stated | PRD review | Security notes | Blocker | TBD |  |
 | QC-010 | Validation | Acceptance can be verified | Every key objective has a verification method and evidence requirement | Checklist review | This checklist | Blocker | TBD |  |
 | QC-011 | Red Team Gate | High-risk review findings are resolved before final output | No unresolved `High` Red Team findings remain; accepted residual `Medium` / `Low` risks are visible in PRD or QC | Red Team review + remediation readback | Red Team issue table and remediation confirmation | Blocker | TBD |  |
+| QC-012 | Front Taste Module | Visual, UI, HTML, dashboard, deck, or decision-material outputs have passed the local Front Taste module or an explicit waiver | The installed `front-taste` skill was run when visual quality matters; must-fix findings are resolved or accepted by the owner | Front Taste review + remediation readback | Front Taste finding table, waiver, or remediation confirmation | Warning | TBD |  |
 
 ## 4. Open QC Questions
 
@@ -51,4 +52,5 @@ Use this Markdown template for `output/<project_slug>_qc_checklist.md`.
 - QC should constrain outcomes, evidence, and release gates, not implementation style.
 - Use `Blocker` sparingly but strictly for contract, safety, data integrity, or core user journey failures.
 - Treat unresolved `High` Red Team findings as `Blocker` issues.
+- Treat unresolved Front Taste must-fix findings as blocking only when they affect task clarity, trust, usability, readability, or artifact acceptance.
 - Do not mark `Pass` unless evidence is available.

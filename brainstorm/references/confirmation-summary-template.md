@@ -49,6 +49,13 @@ Before entering QC checklist discussion, Red Team review, and final artifact gen
 | --- | --- | --- | --- |
 | TBD-001 | TBD | TBD | High |
 
+### 7. 外部评审模块
+
+| 模块 | 触发条件 | 本地 Skill 路径 | Sub Agent 路径 | 状态 |
+| --- | --- | --- | --- | --- |
+| Red Team | 最终输出前必须运行 | Installed `red-team` skill | 由 `red-team` skill 建议，主 Agent 决定是否 spawn | 待运行 |
+| Front Taste | 视觉 / UI / HTML / dashboard / deck / decision-material 质量相关时运行 | Installed `front-taste` skill | 由 `front-taste` skill 建议，主 Agent 决定是否 spawn | TBD |
+
 ## 请确认
 
 请确认以上内容是否可以作为 QC Checklist 讨论、Red Team 审核和最终 PRD / 用户故事地图 / QC Checklist 的生成依据。确认后进入 QC Checklist 讨论；如有修改，请直接指出需要变更的字段。

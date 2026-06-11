@@ -1,34 +1,39 @@
 {
-  "name": "pm-consultant",
-  "display_title": "PM Consultant",
-  "version": "1.2.0",
-  "release_date": "2026-06-03",
-  "description": "Codex skill for PRD-first requirement clarification, QC-gated delivery, and Red Team review before final PRD, user-story-map, and QC checklist outputs.",
+  "name": "brainstorm",
+  "display_title": "Brainstorm",
+  "version": "2.0.0",
+  "release_date": "2026-06-11",
+  "description": "Codex skill for PRD-first requirement clarification, QC-gated delivery, local Red Team and Front Taste modules, and final PRD, user-story-map, and QC checklist outputs.",
   "language": [
     "en",
     "zh-CN"
   ],
-  "source_skill_path": "/Users/lizhendong/.codex/skills/pm-consultant",
+  "source_skill_path": "/Users/lizhendong/.codex/skills/brainstorm",
   "repository": {
     "owner": "Willis1214",
     "repo": "Skills",
-    "branch": "PM-Consultant-Skill",
+    "branch": "Brainstorm-Skill",
     "visibility": "public"
   },
   "skill_files": [
-    "pm-consultant/SKILL.md",
-    "pm-consultant/agents/openai.yaml",
-    "pm-consultant/references/workflow.md",
-    "pm-consultant/references/requirement-clarification.md",
-    "pm-consultant/references/confirmation-summary-template.md",
-    "pm-consultant/references/prd-template.md",
-    "pm-consultant/references/user-story-map-template.html",
-    "pm-consultant/references/qc-checklist-template.md",
-    "pm-consultant/references/final-output-contract.md"
+    "brainstorm/SKILL.md",
+    "brainstorm/agents/openai.yaml",
+    "brainstorm/references/workflow.md",
+    "brainstorm/references/requirement-clarification.md",
+    "brainstorm/references/confirmation-summary-template.md",
+    "brainstorm/references/prd-template.md",
+    "brainstorm/references/user-story-map-template.html",
+    "brainstorm/references/qc-checklist-template.md",
+    "brainstorm/references/final-output-contract.md"
   ],
   "documentation": [
     "README.md",
     "REVISION_HISTORY.md"
   ],
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "migration": {
+    "previous_name": "pm-consultant",
+    "previous_display_title": "PM Consultant",
+    "previous_branch": "PM-Consultant-Skill"
+  }
 }

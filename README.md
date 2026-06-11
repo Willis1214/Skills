@@ -1,19 +1,19 @@
-# PM Consultant
+# Brainstorm
 
 ## English
 
-PM Consultant is a Codex skill for PRD-first requirement clarification, QC-gated delivery, and Red Team review before final specification output.
+Brainstorm is a Codex skill for turning unclear engineering or product ideas into a confirmed requirement package before implementation starts.
 
-It helps complex engineering ideas move from unclear intent to a confirmed requirement package before implementation starts. The skill constrains the problem, user story map, input/output contract, boundaries, risk handling, and acceptance checks. It does not prescribe or restrict the implementation path unless the user explicitly provides hard technical constraints.
+It keeps the proven PRD-first workflow from the former PM Consultant skill: clarify requirements, build a user story map, confirm the requirement contract, discuss QC coverage, run a Red Team gate, then produce final PRD/story-map/QC artifacts. The implementation path is intentionally not prescribed unless the user gives hard technical constraints.
 
 ### What It Does
 
-- Clarifies project background, business objective, users, inputs, outputs, boundaries, non-goals, runtime environment, constraints, and success criteria.
+- Clarifies project background, objective, users, inputs, outputs, boundaries, non-goals, runtime environment, constraints, and success criteria.
 - Builds a user story map with roles, activities, tasks, system responses, process flow, condition architecture, exceptions, and edge cases.
-- Summarizes all confirmed information and unresolved `TBD` items for explicit user confirmation.
+- Summarizes confirmed information and unresolved `TBD` items for explicit user confirmation.
 - Discusses a QC checklist before final output so acceptance criteria become part of the requirement contract.
-- Runs a Red Team gate before final artifacts, using risk levels `High`, `Medium`, and `Low`.
-- Blocks final output until every `High` Red Team finding is remediated and the user confirms the remediation.
+- Runs the installed local `red-team` skill before final artifacts; if that skill recommends the `red-team` Sub Agent, the main Agent owns the spawn call and final integration.
+- Runs the installed local `front-taste` skill when visual, UI, HTML, dashboard, deck, or decision-material quality matters; if that skill recommends the `front-taste` Sub Agent, the main Agent owns the spawn call and final integration.
 - Produces a final three-artifact package:
   - PRD Markdown
   - user story map HTML
@@ -29,7 +29,7 @@ Use this skill when:
 - you want a PRD-ready package before implementation
 - you need a user story map with flow and condition architecture
 - you need a QC checklist that constrains acceptance without over-constraining implementation
-- you want adversarial review before final specification files are generated
+- you need local Red Team and Front Taste modules to feed reviewed findings back into the main workflow
 
 ### When Not To Use It
 
@@ -38,7 +38,7 @@ Do not use this skill for:
 - simple factual answers
 - narrow bug fixes with already confirmed requirements
 - formal code review findings
-- ordinary repository publishing workflows
+- ordinary GitHub repository publishing workflows
 - cases where the user has already provided a complete PRD and only wants implementation
 
 ### Workflow
@@ -49,40 +49,48 @@ Do not use this skill for:
 | 2 | User story map | Draft story map and flow/condition model | User confirms story map direction |
 | 3 | Structured confirmation | Requirement contract summary with confirmed and `TBD` items | User explicitly confirms or edits |
 | 4 | QC checklist discussion | Draft QC checklist and severity rules | User confirms checklist coverage |
-| 5 | Red Team review and remediation | Risk-ranked adversarial review plus remediation decisions | No unresolved `High` findings; user confirms Red Team pass |
-| 6 | Final output package | PRD Markdown, user story map HTML, QC checklist Markdown | Artifacts generated and validated |
+| 5 | Red Team review and remediation | Local `red-team` skill review plus remediation decisions | No unresolved `High` findings; user confirms Red Team pass |
+| 6 | Final output package | PRD Markdown, user story map HTML, QC checklist Markdown, plus Front Taste review when visual quality matters | Artifacts generated and validated |
 
 ### Installation
 
 Install from the central Skills repository branch:
 
 ```bash
-npx skills add https://github.com/Willis1214/Skills/tree/PM-Consultant-Skill --skill pm-consultant
+npx skills add https://github.com/Willis1214/Skills/tree/Brainstorm-Skill --skill brainstorm
 ```
 
-Or copy `pm-consultant/` from this branch into your Codex skills directory.
+Or copy `brainstorm/` from this branch into your Codex skills directory.
 
 ### Usage Prompt
 
 ```text
-Use $pm-consultant to clarify requirements, build a user story map, confirm structured requirements, discuss QC checklist coverage, run a Red Team review and remediate high-risk findings, then output PRD Markdown, user-story-map HTML, and QC checklist Markdown without prescribing the implementation path.
+Use $brainstorm to clarify requirements, build a user story map, confirm structured requirements, discuss QC checklist coverage, run the local Red Team skill and remediate high-risk findings, run the local Front Taste skill when visual quality matters, then output PRD Markdown, user-story-map HTML, and QC checklist Markdown without prescribing the implementation path.
 ```
 
 ### Repository Contents
 
-- `pm-consultant/SKILL.md`: core skill instructions and workflow gate.
-- `pm-consultant/agents/openai.yaml`: Codex app display metadata.
-- `pm-consultant/references/workflow.md`: workflow sequence, Red Team gate shape, and gate rules.
-- `pm-consultant/references/requirement-clarification.md`: requirement contract fields and clarification prompts.
-- `pm-consultant/references/confirmation-summary-template.md`: structured confirmation gate template.
-- `pm-consultant/references/prd-template.md`: final PRD Markdown template, including Red Team Gate Summary.
-- `pm-consultant/references/user-story-map-template.html`: self-contained HTML story map template.
-- `pm-consultant/references/qc-checklist-template.md`: final QC checklist Markdown template with Red Team gate item.
-- `pm-consultant/references/final-output-contract.md`: final artifact contract and validation checklist.
+- `brainstorm/SKILL.md`: core skill instructions and workflow gate.
+- `brainstorm/agents/openai.yaml`: Codex app display metadata.
+- `brainstorm/references/workflow.md`: workflow sequence, Red Team module, Front Taste module, and gate rules.
+- `brainstorm/references/requirement-clarification.md`: requirement contract fields and clarification prompts.
+- `brainstorm/references/confirmation-summary-template.md`: structured confirmation gate template.
+- `brainstorm/references/prd-template.md`: final PRD Markdown template, including Red Team and Front Taste summaries.
+- `brainstorm/references/user-story-map-template.html`: self-contained HTML story map template.
+- `brainstorm/references/qc-checklist-template.md`: final QC checklist Markdown template with Red Team and Front Taste items.
+- `brainstorm/references/final-output-contract.md`: final artifact contract and validation checklist.
 - `manifest.json`: release metadata for this skill branch.
 - `REVISION_HISTORY.md`: version history.
 
 ### Release Notes
+
+#### v2.0.0 - 2026-06-11
+
+- Renamed the real skill name, trigger, display name, package folder, and usage prompt from PM Consultant / `pm-consultant` to Brainstorm / `brainstorm`.
+- Preserved the existing six-step PRD-first implementation path.
+- Made Red Team a local-skill-first module: Brainstorm calls the installed `red-team` skill first, and that skill may recommend the `red-team` Sub Agent.
+- Added Front Taste as a local-skill-first Step 6 validation module for visual, UI, HTML, dashboard, deck, and decision-material outputs.
+- Updated PRD, confirmation, QC, and final-output templates so Red Team and Front Taste evidence can be carried into final artifacts.
 
 #### v1.2.0 - 2026-06-03
 
@@ -90,22 +98,16 @@ Use $pm-consultant to clarify requirements, build a user story map, confirm stru
 - Moved final artifact generation from Step 5 to Step 6.
 - Added `QC-011` to require Red Team high-risk closure before final output.
 - Added a PRD Red Team Gate Summary so final artifacts can carry review evidence.
-- Updated the default prompt and final output contract to block unresolved `High` findings.
 
 #### v1.1.0 - 2026-05-18
 
 - Reworked the skill from a fixed five-stage consulting/code/UAT/retrospective flow into a PRD-first, QC-gated requirement workflow.
 - Removed default code-design and retrospective stages.
 - Added final output contract for PRD Markdown, user-story-map HTML, and QC checklist Markdown.
-- Added a self-contained user story map HTML template with process flow and condition architecture.
-- Updated guidance to avoid over-constraining the language model's implementation path.
 
 #### v1.0.0 - 2026-05-18
 
-- Initial public release.
-- Added the `pm-consultant` installable skill with display name `PM Consultant`.
-- Defined five explicit stages: consultation, PRD, code design, UAT/QC, and retrospective.
-- Added stage-specific reference templates.
+- Initial public release as PM Consultant.
 
 ### Safety and Boundaries
 
@@ -114,6 +116,7 @@ Use $pm-consultant to clarify requirements, build a user story map, confirm stru
 - It marks unresolved content as `TBD`.
 - It constrains requirements and acceptance criteria, not implementation style.
 - It does not generate final PRD, story-map HTML, or QC checklist files until the Red Team gate passes.
+- Red Team and Front Taste are local-skill-first modules; Brainstorm does not bypass those skills by directly inventing Sub Agent work.
 
 ### License
 
@@ -123,18 +126,18 @@ No open-source license has been selected in this release. Treat the contents as 
 
 ## 中文
 
-PM Consultant 是一个 Codex skill，用于 PRD-first 的需求澄清、QC-gated 的交付准备，以及最终规格文件输出前的 Red Team 审核。
+Brainstorm 是一个 Codex skill，用于把仍然模糊的工程或产品想法，在进入实现前整理成确认过的需求包。
 
-它帮助复杂工程想法在开始实现前，先形成确认过的需求包。该 skill 约束问题、用户故事地图、输入输出契约、边界、风险处理和验收检查，不规定或限制具体实现路径，除非用户明确提供硬性技术约束。
+它保留原 PM Consultant 已验证的 PRD-first 工作流：需求澄清、用户故事地图、结构化确认、QC Checklist 讨论、Red Team gate、最终三件套输出。它不规定具体实现路径，除非用户明确提供硬性技术约束。
 
 ### 它做什么
 
-- 澄清项目背景、业务目标、用户、输入、输出、边界、非目标、运行环境、约束和成功标准。
+- 澄清项目背景、目标、用户、输入、输出、边界、非目标、运行环境、约束和成功标准。
 - 建立用户故事地图，包括角色、活动、任务、系统响应、流程、条件架构、异常和边界场景。
-- 汇总所有已确认信息和未解决的 `TBD` 项，要求用户二次确认。
-- 在最终输出前先讨论 QC Checklist，让验收标准成为需求合同的一部分。
-- 在最终文件输出前运行 Red Team gate，使用 `High`、`Medium`、`Low` 风险等级。
-- 在所有 `High` Red Team findings 修复并由用户确认前，阻止最终输出。
+- 汇总已确认信息和未解决的 `TBD` 项，要求用户二次确认。
+- 在最终输出前讨论 QC Checklist，让验收标准成为需求合同的一部分。
+- 最终文件前先调用本地 `red-team` skill；如果该 skill 建议调用 `red-team` Sub Agent，则由主 Agent 负责 spawn、整合和最终判断。
+- 当视觉、UI、HTML、dashboard、deck 或决策材料质量相关时，调用本地 `front-taste` skill；如果该 skill 建议调用 `front-taste` Sub Agent，则由主 Agent 负责 spawn、整合和最终判断。
 - 最终输出三件套：
   - PRD Markdown
   - 用户故事地图 HTML
@@ -150,7 +153,7 @@ PM Consultant 是一个 Codex skill，用于 PRD-first 的需求澄清、QC-gate
 - 需要在实现前形成 PRD-ready package
 - 需要带流程和条件架构的用户故事地图
 - 需要用 QC Checklist 限制验收，而不是限制实现路径
-- 需要在最终规格文件生成前做对抗式风险审查
+- 需要把本地 Red Team 和 Front Taste 模块的审查结果回灌到主流程
 
 ### 什么时候不使用
 
@@ -170,63 +173,65 @@ PM Consultant 是一个 Codex skill，用于 PRD-first 的需求澄清、QC-gate
 | 2 | 用户故事地图 | Draft story map 和流程/条件模型 | 用户确认故事地图方向 |
 | 3 | 结构化确认 | 含已确认项和 `TBD` 的需求合同摘要 | 用户明确确认或修改 |
 | 4 | QC Checklist 讨论 | Draft QC checklist 和严重等级规则 | 用户确认 checklist 覆盖范围 |
-| 5 | Red Team review and remediation | 风险排序后的对抗式审查与修复决策 | 无未解决 `High` findings，且用户确认 Red Team pass |
-| 6 | 最终三件套输出 | PRD Markdown、用户故事地图 HTML、QC Checklist Markdown | 文件生成并验证 |
+| 5 | Red Team review and remediation | 本地 `red-team` skill 审查与修复决策 | 无未解决 `High` findings，且用户确认 Red Team pass |
+| 6 | 最终三件套输出 | PRD Markdown、用户故事地图 HTML、QC Checklist Markdown；视觉质量相关时加入 Front Taste review | 文件生成并验证 |
 
 ### 安装
 
 从中央 Skills 仓库分支安装：
 
 ```bash
-npx skills add https://github.com/Willis1214/Skills/tree/PM-Consultant-Skill --skill pm-consultant
+npx skills add https://github.com/Willis1214/Skills/tree/Brainstorm-Skill --skill brainstorm
 ```
 
-也可以把本分支的 `pm-consultant/` 复制到本地 Codex skills 目录。
+也可以把本分支的 `brainstorm/` 复制到本地 Codex skills 目录。
 
 ### 使用 Prompt
 
 ```text
-Use $pm-consultant to clarify requirements, build a user story map, confirm structured requirements, discuss QC checklist coverage, run a Red Team review and remediate high-risk findings, then output PRD Markdown, user-story-map HTML, and QC checklist Markdown without prescribing the implementation path.
+Use $brainstorm to clarify requirements, build a user story map, confirm structured requirements, discuss QC checklist coverage, run the local Red Team skill and remediate high-risk findings, run the local Front Taste skill when visual quality matters, then output PRD Markdown, user-story-map HTML, and QC checklist Markdown without prescribing the implementation path.
 ```
 
 ### 仓库内容
 
-- `pm-consultant/SKILL.md`: 核心 skill 指令与 workflow gate。
-- `pm-consultant/agents/openai.yaml`: Codex app 展示 metadata。
-- `pm-consultant/references/workflow.md`: 工作流顺序、Red Team gate 形态与 gate 规则。
-- `pm-consultant/references/requirement-clarification.md`: 需求合同字段与澄清问题。
-- `pm-consultant/references/confirmation-summary-template.md`: 结构化确认 gate 模板。
-- `pm-consultant/references/prd-template.md`: 最终 PRD Markdown 模板，包含 Red Team Gate Summary。
-- `pm-consultant/references/user-story-map-template.html`: 自包含 HTML 用户故事地图模板。
-- `pm-consultant/references/qc-checklist-template.md`: 包含 Red Team gate 检查项的 QC Checklist Markdown 模板。
-- `pm-consultant/references/final-output-contract.md`: 最终产物合同与验证清单。
+- `brainstorm/SKILL.md`: 核心 skill 指令与 workflow gate。
+- `brainstorm/agents/openai.yaml`: Codex app 展示 metadata。
+- `brainstorm/references/workflow.md`: 工作流顺序、Red Team 模块、Front Taste 模块与 gate 规则。
+- `brainstorm/references/requirement-clarification.md`: 需求合同字段与澄清问题。
+- `brainstorm/references/confirmation-summary-template.md`: 结构化确认 gate 模板。
+- `brainstorm/references/prd-template.md`: 最终 PRD Markdown 模板，包含 Red Team 和 Front Taste 摘要。
+- `brainstorm/references/user-story-map-template.html`: 自包含 HTML 用户故事地图模板。
+- `brainstorm/references/qc-checklist-template.md`: 包含 Red Team 和 Front Taste 检查项的 QC Checklist Markdown 模板。
+- `brainstorm/references/final-output-contract.md`: 最终产物合同与验证清单。
 - `manifest.json`: 当前 skill 分支的 release metadata。
 - `REVISION_HISTORY.md`: 版本历史。
 
 ### Release Notes
+
+#### v2.0.0 - 2026-06-11
+
+- 将真实 skill 名、触发名、展示名、包目录和使用 prompt 从 PM Consultant / `pm-consultant` 改为 Brainstorm / `brainstorm`。
+- 保留原有六步 PRD-first 实现路径。
+- 将 Red Team 明确为 local-skill-first 模块：Brainstorm 先调用本地 `red-team` skill，再由该 skill 建议是否调用 `red-team` Sub Agent。
+- 增加 Front Taste 作为 Step 6 的 local-skill-first 验证模块，适用于视觉、UI、HTML、dashboard、deck 和决策材料输出。
+- 更新 PRD、结构化确认、QC 和最终输出模板，让 Red Team 与 Front Taste 证据可进入最终产物。
 
 #### v1.2.0 - 2026-06-03
 
 - 在最终规格文件输出前增加 Red Team review and remediation gate。
 - 将最终文件生成从 Step 5 顺延到 Step 6。
 - 增加 `QC-011`，要求 Red Team high-risk closure 后才能最终输出。
-- 在 PRD 模板中增加 Red Team Gate Summary，确保最终产物保留审核证据。
-- 更新默认 prompt 和 final output contract，阻止存在未解决 `High` findings 时输出最终文件。
+- 在 PRD 模板中增加 Red Team Gate Summary。
 
 #### v1.1.0 - 2026-05-18
 
 - 将 skill 从固定五阶段咨询/代码/UAT/复盘流程改为 PRD-first、QC-gated 的需求工作流。
 - 移除默认代码设计和复盘阶段。
 - 增加 PRD Markdown、用户故事地图 HTML、QC Checklist Markdown 的最终输出合同。
-- 增加自包含用户故事地图 HTML 模板，覆盖流程和条件架构。
-- 更新规则，避免过度限制语言模型的具体实现路径。
 
 #### v1.0.0 - 2026-05-18
 
-- 首次公开发布。
-- 增加 installable skill `pm-consultant`，展示名为 `PM Consultant`。
-- 定义五个显式阶段：consultation、PRD、code design、UAT/QC、retrospective。
-- 增加阶段化 reference templates。
+- 以 PM Consultant 名称首次公开发布。
 
 ### 安全与边界
 
@@ -235,6 +240,7 @@ Use $pm-consultant to clarify requirements, build a user story map, confirm stru
 - 未解决内容标为 `TBD`。
 - 它约束需求和验收标准，不约束实现风格。
 - Red Team gate 未通过前，不生成最终 PRD、用户故事地图 HTML 或 QC Checklist 文件。
+- Red Team 和 Front Taste 是 local-skill-first 模块；Brainstorm 不绕过这些 skill 直接编造 Sub Agent 任务。
 
 ### License
 

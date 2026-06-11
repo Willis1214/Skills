@@ -73,7 +73,16 @@ Use this Markdown template for `output/<project_slug>_prd.md`.
 | Medium / Low 残余风险 | TBD |
 | 用户确认 | Confirmed / TBD |
 
-## 12. 待确认问题
+## 12. Front Taste Module Summary
+
+| 项目 | 内容 |
+| --- | --- |
+| Front Taste 适用性 | Applicable / Waived / Not Applicable / TBD |
+| 本地 skill 运行状态 | Passed / Needs Fix / Waived / TBD |
+| Must-fix 处理结果 | None / Remediated / Accepted / Blocked / TBD |
+| Sub Agent 建议 | None / Recommended / Executed / TBD |
+
+## 13. 待确认问题
 
 | 编号 | 问题 | 影响范围 | 优先级 |
 | --- | --- | --- | --- |
@@ -84,4 +93,5 @@ Use this Markdown template for `output/<project_slug>_prd.md`.
 - Use only confirmed content plus explicit `TBD`.
 - Do not include implementation path unless it is a confirmed requirement.
 - Do not mark Red Team 状态 as `Passed` unless the step 5 Red Team gate passed.
+- Do not mark Front Taste 本地 skill 运行状态 as `Passed` unless the installed local `front-taste` skill was run or the module was explicitly waived as not applicable.
 - Keep identifiers, filenames, CLI flags, API names, and technical labels exactly as provided.

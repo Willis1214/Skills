@@ -1,15 +1,15 @@
 ---
-name: pm-consultant
-description: "Clarify complex engineering/product ideas before implementation through staged user confirmations: requirements, user story map, confirmed summary, QC checklist, Red Team remediation, then PRD/story-map/QC outputs. Do not constrain implementation choices unless the user provides technical constraints."
+name: brainstorm
+description: "Clarify complex engineering/product ideas before implementation through staged confirmations: requirements, user story map, confirmed summary, QC checklist, Red Team remediation, optional Front Taste review, then PRD/story-map/QC outputs. Do not constrain implementation choices unless the user provides technical constraints."
 ---
 
-# PM Consultant
+# Brainstorm
 
 ## Purpose
 
 Guide a complex engineering idea into a clear, confirmed requirement package before work starts.
 
-This skill controls the requirement and quality contract, not the implementation route. The goal is to clarify the user's background, objective, inputs, outputs, user story map, boundaries, interaction / physical-world constraints, and QC checklist, pass a Red Team gate, then produce a PRD-ready delivery package.
+This skill controls the requirement and quality contract, not the implementation route. The goal is to clarify the user's background, objective, inputs, outputs, user story map, boundaries, interaction / physical-world constraints, and QC checklist, pass a Red Team gate, optionally pass a Front Taste review when visual artifacts or product surfaces matter, then produce a PRD-ready delivery package.
 
 ## Core Principle
 
@@ -42,8 +42,11 @@ Bad constraints unless explicitly requested:
 - Do not prescribe implementation details unless the user asks for implementation guidance or supplies hard technical constraints.
 - When a solution involves human-machine, human-human, or machine-machine interaction, explicitly clarify physical-world boundary conditions such as logical mutual exclusion, chain reactions, hidden sharing, and overfitting risk. Mark unknowns as `TBD`; do not assume them away.
 - Before final artifacts, run a Red Team review of the confirmed requirement package and draft QC/story-map direction.
+- The Red Team review must use the installed local `red-team` skill first. If that skill recommends Sub Agent execution, the main Agent may spawn the matching `red-team` Sub Agent and then integrate its findings back into this workflow.
 - Red Team gate passes only when no `High` findings remain, or every `High` finding has been addressed in the confirmed plan and the user confirms the remediation. Unresolved `High` findings block final output.
 - Use Red Team findings to strengthen requirements, boundaries, exception handling, evidence, and QC gates. Do not use the Red Team step to invent business facts or prescribe an implementation path.
+- When the final package includes visual, UI, HTML, dashboard, deck, or decision-material quality concerns, run the installed local `front-taste` skill as the Front Taste module before final delivery. If that skill recommends Sub Agent execution, the main Agent may spawn the matching `front-taste` Sub Agent and then integrate its findings back into this workflow.
+- Red Team and Front Taste are local-skill-first modules. Brainstorm does not bypass those skills by directly inventing a Sub Agent task card.
 - If the user asks for code after the PRD package is confirmed, let the implementation agent choose a path that satisfies the PRD and QC checklist.
 
 ## Workflow
@@ -56,13 +59,15 @@ Read `references/workflow.md` before running the workflow.
 | 2 | User story map | Clarify roles, activities, user tasks, system responses, main flow, exception flow, and condition branches | `references/user-story-map-template.html` | User confirms story map direction |
 | 3 | Structured confirmation | Summarize all confirmed information and unresolved `TBD` items | `references/confirmation-summary-template.md` | User explicitly confirms or edits |
 | 4 | QC checklist discussion | Define quality gate, blocker rules, verification method, evidence, severity, and status columns | `references/qc-checklist-template.md` | User confirms checklist coverage |
-| 5 | Red Team review and remediation | Attack the confirmed package for boundary, exception, assumption, logic, execution, evidence, and QC risks; remediate high-risk findings | Installed `red-team` skill contract and `references/workflow.md` | No unresolved `High` findings; user confirms Red Team pass |
-| 6 | Final output package | Produce PRD Markdown, user story map HTML, and QC checklist Markdown table | `references/final-output-contract.md`, plus templates | Final artifacts generated and validated |
+| 5 | Red Team review and remediation | Use the installed local `red-team` skill to attack the confirmed package for boundary, exception, assumption, logic, execution, evidence, and QC risks; remediate high-risk findings | Installed `red-team` skill contract and `references/workflow.md` | No unresolved `High` findings; user confirms Red Team pass |
+| 6 | Final output package | Produce PRD Markdown, user story map HTML, and QC checklist Markdown table; run the installed local `front-taste` skill first when visual / UI / HTML quality matters | `references/final-output-contract.md`, plus templates and optional installed `front-taste` skill contract | Final artifacts generated and validated |
 
 ## Output Rules
 
 - During steps 1-5, respond in chat with compact tables and 1-3 next questions.
 - In step 5, use the Red Team risk levels `High`, `Medium`, and `Low`, keep the five highest-risk issues, and mark every `High` item as blocking until remediated and confirmed.
+- In step 5, call the local `red-team` skill before any Red Team Sub Agent path. Follow that skill's recommendation if it asks the main Agent to spawn a Sub Agent.
+- In step 6, call the local `front-taste` skill before delivering visual, UI, HTML, dashboard, deck, or decision-material artifacts. Follow that skill's recommendation if it asks the main Agent to spawn a Sub Agent.
 - In step 6, write final artifacts under `output/` unless the user specifies another path:
   - `output/<project_slug>_prd.md`
   - `output/<project_slug>_user_story_map.html`
@@ -84,3 +89,4 @@ Load only the reference needed for the current step:
 - `references/qc-checklist-template.md`
 - `references/final-output-contract.md`
 - Installed `red-team` skill, only when running the Red Team gate
+- Installed `front-taste` skill, only when visual, UI, HTML, dashboard, deck, or decision-material quality matters

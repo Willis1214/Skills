@@ -1,4 +1,4 @@
-# PM Consultant Workflow
+# Brainstorm Workflow
 
 ## Goal
 
@@ -14,8 +14,8 @@ The workflow defines what the user needs, not how the model must implement it. I
 | 2 | User story map | Draft story map and flow/condition model | User confirms story map direction |
 | 3 | Structured confirmation | Requirement contract summary with confirmed and `TBD` items | User explicitly confirms or revises |
 | 4 | QC checklist discussion | Draft QC checklist and severity rules | User confirms checklist coverage |
-| 5 | Red Team review and remediation | Risk-ranked adversarial review plus remediation decisions | No unresolved `High` findings; user confirms Red Team pass |
-| 6 | Final output package | PRD Markdown, user story map HTML, QC checklist Markdown | Artifacts written and validated |
+| 5 | Red Team review and remediation | Local `red-team` skill review plus remediation decisions | No unresolved `High` findings; user confirms Red Team pass |
+| 6 | Final output package | PRD Markdown, user story map HTML, QC checklist Markdown, plus Front Taste review when visual quality matters | Artifacts written and validated |
 
 ## Gate Rules
 
@@ -25,9 +25,11 @@ The workflow defines what the user needs, not how the model must implement it. I
 - If the user tries to jump to implementation before the requirement package is confirmed, summarize the missing contract items first.
 - If the user explicitly asks to skip a step, note the skipped step and resulting risk.
 - Before final artifacts, run a Red Team gate on the confirmed requirement package, story-map direction, and QC checklist coverage.
+- Red Team is a local-skill-first module: load the installed `red-team` skill and follow its review contract. If the `red-team` skill recommends spawning the `red-team` Sub Agent, the main Agent owns the spawn call, final integration, and user-facing gate decision.
 - Treat every `High` Red Team finding as a blocker until it is addressed in the confirmed package and the user confirms the remediation.
 - If a Red Team finding cannot be judged from confirmed information, keep it as `TBD` and reflect the risk in the PRD or QC checklist instead of guessing.
 - `Medium` and `Low` findings may pass only when they are either incorporated, explicitly accepted by the user, or left visible as `TBD` with owner impact.
+- Front Taste is also a local-skill-first module. When the final package includes visual, UI, HTML, dashboard, deck, or decision-material quality concerns, load the installed `front-taste` skill during Step 6 validation. If `front-taste` recommends spawning the `front-taste` Sub Agent, the main Agent owns the spawn call, final integration, and delivery decision.
 
 ## Standard Chat Shape
 
@@ -55,7 +57,7 @@ Use this shape flexibly, but always preserve confirmed facts, open `TBD` items, 
 
 ## Red Team Gate Shape
 
-For step 5, review the confirmed package adversarially. Use the installed `red-team` skill's review categories and risk levels:
+For step 5, review the confirmed package adversarially. Use the installed local `red-team` skill first. The Red Team skill may recommend a Sub Agent route, but Brainstorm must not bypass the local skill contract. Use the installed `red-team` skill's review categories and risk levels:
 
 - boundary vulnerabilities
 - omitted special cases
@@ -74,6 +76,17 @@ Output:
 4. A next confirmation question asking whether the strengthened package can pass the Red Team gate.
 
 Do not proceed to final artifacts until the Red Team gate passes.
+
+## Front Taste Module Shape
+
+For step 6, use Front Taste only when visual quality, UI clarity, HTML report readability, dashboard composition, deck quality, or decision-material taste matters.
+
+1. Load the installed local `front-taste` skill.
+2. Ask it to review the relevant artifact direction or final draft.
+3. If `front-taste` recommends spawning the `front-taste` Sub Agent, the main Agent may spawn it and then integrate the findings.
+4. Treat must-fix taste findings as blockers for visual delivery only when they affect task clarity, trust, usability, readability, or artifact acceptance.
+
+Do not add a new numbered workflow step for Front Taste. It is a Step 6 validation module.
 
 ## Final Artifact Rule
 

@@ -2,6 +2,51 @@
 
 ## English
 
+### v2.0.0 - 2026-06-11
+
+| Field | Value |
+| --- | --- |
+| Version | v2.0.0 |
+| Date | 2026-06-11 |
+| Change Type | Major rename and routing update |
+| Repository | Willis1214/Skills |
+| Branch | Brainstorm-Skill |
+
+#### Summary
+
+Renamed the real skill identity from PM Consultant / `pm-consultant` to Brainstorm / `brainstorm`, while preserving the existing six-step PRD-first implementation path.
+
+#### Source Skill Changes
+
+- Renamed the installable skill name, frontmatter name, package folder, UI display name, and default prompt to `brainstorm` / Brainstorm.
+- Preserved the existing workflow sequence: requirement clarification, user story map, structured confirmation, QC checklist discussion, Red Team review and remediation, and final output package.
+- Updated the Red Team gate so Brainstorm must call the installed local `red-team` skill first; any `red-team` Sub Agent call is recommended through that skill and executed by the main Agent.
+- Added Front Taste as a Step 6 local-skill-first validation module for visual, UI, HTML, dashboard, deck, and decision-material outputs.
+- Updated `references/final-output-contract.md`, `references/qc-checklist-template.md`, `references/prd-template.md`, and `references/confirmation-summary-template.md` so Red Team and Front Taste module evidence can be carried into final artifacts.
+- Updated `agents/openai.yaml` to display Brainstorm and use `$brainstorm`.
+
+#### Repository Documentation Changes
+
+- Rewrote README around the Brainstorm identity and install command.
+- Updated `manifest.json` to version `2.0.0`, branch `Brainstorm-Skill`, and source skill path `/Users/lizhendong/.codex/skills/brainstorm`.
+
+#### Compatibility and Migration
+
+- The old installable skill name `pm-consultant` has been replaced by `brainstorm`.
+- The previous `PM-Consultant-Skill` branch remains as legacy history unless separately deleted or archived.
+- Users should install with `--skill brainstorm`.
+
+#### Validation
+
+- Local source skill validation: pending in this release task.
+- Branch package validation: pending in this release task.
+- Manifest JSON parse: pending in this release task.
+
+#### Known Gaps
+
+- No open-source license has been selected.
+- Legacy branch cleanup is intentionally out of scope.
+
 ### v1.2.0 - 2026-06-03
 
 | Field | Value |
@@ -98,6 +143,51 @@ Initial public release of `pm-consultant` as a staged product and architecture c
 ---
 
 ## 中文
+
+### v2.0.0 - 2026-06-11
+
+| 字段 | 值 |
+| --- | --- |
+| 版本 | v2.0.0 |
+| 日期 | 2026-06-11 |
+| 变更类型 | Major rename and routing update |
+| 仓库 | Willis1214/Skills |
+| 分支 | Brainstorm-Skill |
+
+#### 摘要
+
+将真实 skill 身份从 PM Consultant / `pm-consultant` 改为 Brainstorm / `brainstorm`，同时保留原有六步 PRD-first 实现路径。
+
+#### Source Skill 变更
+
+- 将 installable skill name、frontmatter name、包目录、UI 展示名和默认 prompt 改为 `brainstorm` / Brainstorm。
+- 保留原工作流顺序：需求澄清、用户故事地图、结构化确认、QC Checklist 讨论、Red Team review and remediation、最终输出包。
+- 更新 Red Team gate：Brainstorm 必须先调用本地 `red-team` skill；任何 `red-team` Sub Agent 调用都由该 skill 建议，并由主 Agent 执行。
+- 增加 Front Taste 作为 Step 6 的 local-skill-first 验证模块，适用于视觉、UI、HTML、dashboard、deck 和决策材料输出。
+- 更新 `references/final-output-contract.md`、`references/qc-checklist-template.md`、`references/prd-template.md` 和 `references/confirmation-summary-template.md`，让 Red Team 与 Front Taste 模块证据可进入最终产物。
+- 更新 `agents/openai.yaml`，展示名为 Brainstorm，默认 prompt 使用 `$brainstorm`。
+
+#### 仓库文档变更
+
+- 围绕 Brainstorm 身份重写 README 和安装命令。
+- 更新 `manifest.json` 到版本 `2.0.0`，分支为 `Brainstorm-Skill`，source skill path 为 `/Users/lizhendong/.codex/skills/brainstorm`。
+
+#### 兼容性与迁移
+
+- 旧 installable skill name `pm-consultant` 已替换为 `brainstorm`。
+- 旧 `PM-Consultant-Skill` 分支作为历史保留，除非后续单独删除或归档。
+- 用户应使用 `--skill brainstorm` 安装。
+
+#### 验证
+
+- Local source skill validation: 本次发布任务内验证。
+- Branch package validation: 本次发布任务内验证。
+- Manifest JSON parse: 本次发布任务内验证。
+
+#### 已知缺口
+
+- 尚未选择开源 License。
+- 旧分支清理不在本次范围内。
 
 ### v1.2.0 - 2026-06-03
 

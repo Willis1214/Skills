@@ -1,0 +1,4 @@
+interface:
+  display_name: "Brainstorm"
+  short_description: "PRD-first requirement, QC, Red Team, and Front Taste workflow"
+  default_prompt: "Use $brainstorm to clarify requirements, including interaction and physical-world boundaries, build a user story map, confirm structured requirements, discuss QC checklist coverage, run the local Red Team skill and remediate high-risk findings, run the local Front Taste skill when visual quality matters, then output PRD Markdown, user-story-map HTML, and QC checklist Markdown without prescribing the implementation path."
