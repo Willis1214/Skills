@@ -1,14 +1,13 @@
 {
   "name": "brainstorm",
   "display_title": "Brainstorm",
-  "version": "2.0.0",
-  "release_date": "2026-06-11",
-  "description": "Codex skill for PRD-first requirement clarification, QC-gated delivery, local Red Team and Front Taste modules, and final PRD, user-story-map, and QC checklist outputs.",
+  "version": "2.1.0",
+  "release_date": "2026-07-01",
+  "description": "Codex skill for repeatable round-loop requirement clarification, story and flow mapping, structured confirmation, QC thinking, risk attack, Red Team gating, optional Front Taste review, and final PRD/story-map/QC outputs.",
   "language": [
     "en",
     "zh-CN"
   ],
-  "source_skill_path": "/Users/lizhendong/.codex/skills/brainstorm",
   "repository": {
     "owner": "Willis1214",
     "repo": "Skills",
@@ -19,6 +18,7 @@
     "brainstorm/SKILL.md",
     "brainstorm/agents/openai.yaml",
     "brainstorm/references/workflow.md",
+    "brainstorm/references/discussion-output-format.md",
     "brainstorm/references/requirement-clarification.md",
     "brainstorm/references/confirmation-summary-template.md",
     "brainstorm/references/prd-template.md",

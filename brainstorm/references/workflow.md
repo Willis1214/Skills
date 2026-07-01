@@ -6,58 +6,64 @@ Create a confirmed requirement package before implementation starts.
 
 The workflow defines what the user needs, not how the model must implement it. Implementation choices remain flexible unless the user provides hard constraints.
 
-## Step Sequence
+## Discussion Round Loop
 
-| Step | Name | Output | Stop Condition |
-| --- | --- | --- | --- |
-| 1 | Requirement clarification | Confirmed requirement fields and open questions | User confirms enough context to map user stories |
-| 2 | User story map | Draft story map and flow/condition model | User confirms story map direction |
-| 3 | Structured confirmation | Requirement contract summary with confirmed and `TBD` items | User explicitly confirms or revises |
-| 4 | QC checklist discussion | Draft QC checklist and severity rules | User confirms checklist coverage |
-| 5 | Red Team review and remediation | Local `red-team` skill review plus remediation decisions | No unresolved `High` findings; user confirms Red Team pass |
-| 6 | Final output package | PRD Markdown, user story map HTML, QC checklist Markdown, plus Front Taste review when visual quality matters | Artifacts written and validated |
+Brainstorm no longer advances through serial chat steps. Every chat round runs the same integrated loop and outputs the fixed role-based discussion format.
+
+Each round must cover these five task classes at the strongest useful depth for the current context:
+
+1. Requirement clarification: background, objective, users, input, output, constraints, interaction / physical-world boundaries, non-goals, and unresolved `TBD`.
+2. Story / flow mapping: roles, activities, user tasks, system responses, main flow, exception flow, condition branches, and process architecture.
+3. Structured confirmation: confirmed decisions, changed decisions, unresolved `TBD`, terminology, filenames, fields, and constraints to preserve.
+4. QC / acceptance thinking: quality gates, blocker rules, verification method, evidence, severity, status, and minimal validation path.
+5. Risk attack: boundary vulnerabilities, omitted special cases, hidden assumptions, logical contradictions, execution blockers, evidence gaps, risk blind spots, and unclear wording.
+
+The loop repeats until the confirmed package is strong enough for final artifacts, or until the user redirects, pauses, or cancels the discussion.
 
 ## Gate Rules
 
-- Ask for confirmation before moving to the next step.
+- Ask only the next 1-3 questions needed to strengthen the current package; do not ask everything at once.
 - If the user changes a confirmed item, update downstream summaries and mark the change.
 - If required information is missing, keep it as `TBD`; do not fill it with guesses.
 - If the user tries to jump to implementation before the requirement package is confirmed, summarize the missing contract items first.
-- If the user explicitly asks to skip a step, note the skipped step and resulting risk.
+- If the user explicitly waives part of the discussion loop, note the waived task class and resulting risk.
 - Before final artifacts, run a Red Team gate on the confirmed requirement package, story-map direction, and QC checklist coverage.
 - Red Team is a local-skill-first module: load the installed `red-team` skill and follow its review contract. If the `red-team` skill recommends spawning the `red-team` Sub Agent, the main Agent owns the spawn call, final integration, and user-facing gate decision.
 - Treat every `High` Red Team finding as a blocker until it is addressed in the confirmed package and the user confirms the remediation.
 - If a Red Team finding cannot be judged from confirmed information, keep it as `TBD` and reflect the risk in the PRD or QC checklist instead of guessing.
 - `Medium` and `Low` findings may pass only when they are either incorporated, explicitly accepted by the user, or left visible as `TBD` with owner impact.
-- Front Taste is also a local-skill-first module. When the final package includes visual, UI, HTML, dashboard, deck, or decision-material quality concerns, load the installed `front-taste` skill during Step 6 validation. If `front-taste` recommends spawning the `front-taste` Sub Agent, the main Agent owns the spawn call, final integration, and delivery decision.
+- Front Taste is also a local-skill-first module. When the final package includes visual, UI, HTML, dashboard, deck, or decision-material quality concerns, load the installed `front-taste` skill during final output validation. If `front-taste` recommends a sidecar, the main Agent follows the current `$front-taste` sidecar route and owns final integration and delivery decision.
 
 ## Standard Chat Shape
 
-For steps 1-4, keep responses short and decision-oriented:
+For every discussion round, keep the response in the fixed role-based discussion format from `references/discussion-output-format.md`.
 
-```markdown
-## 当前确认
+The process format must preserve these role labels in order. Use the same label style for every role: emoji + role name, without Markdown heading markers such as `##`.
 
-| 项目 | 当前内容 | 状态 |
-| --- | --- | --- |
+1. `🧭 主持人`
+2. `📝 记录者`
+3. `💡 补充者（用户视角）`
+4. `💡 补充者（交付视角）`
+5. `💡 补充者（系统视角）`
+6. `🧱 边界官`
+7. `⚔️ 攻击者`
+8. `📌 汇总者`
 
-## 需要讨论
+Do not replace this process format with Markdown tables. Always preserve confirmed facts, changed decisions, open `TBD` items, risks, boundaries, the minimal verification path, and the next 1-3 questions.
 
-| 主题 | 当前选项 | 影响 | 建议 |
-| --- | --- | --- | --- |
+Map the five task classes into the role format:
 
-## 下一步确认
+1. Requirement clarification appears mainly under `🧭 主持人`, `📝 记录者`, and `🧱 边界官`.
+2. Story / flow mapping appears mainly under `💡 补充者（用户视角）` and `💡 补充者（系统视角）`.
+3. Structured confirmation appears mainly under `📝 记录者`.
+4. QC / acceptance thinking appears mainly under `💡 补充者（交付视角）`.
+5. Risk attack appears mainly under `⚔️ 攻击者`.
 
-1. ...
-2. ...
-3. ...
-```
+Use `📌 汇总者` only as a compressed page-level recap. It should list which outputs exist in the current round, such as confirmed items, changed decisions, split perspectives, TBD items, risk items, acceptance checks, or next questions, without repeating the detailed content already written by the other roles.
 
-Use this shape flexibly, but always preserve confirmed facts, open `TBD` items, and next questions.
+## Final Red Team Gate Shape
 
-## Red Team Gate Shape
-
-For step 5, review the confirmed package adversarially. Use the installed local `red-team` skill first. The Red Team skill may recommend a Sub Agent route, but Brainstorm must not bypass the local skill contract. Use the installed `red-team` skill's review categories and risk levels:
+Before final artifacts, review the confirmed package adversarially. Use the installed local `red-team` skill first. The Red Team skill may recommend a Sub Agent route, but Brainstorm must not bypass the local skill contract. Use the installed `red-team` skill's review categories and risk levels:
 
 - boundary vulnerabilities
 - omitted special cases
@@ -79,18 +85,18 @@ Do not proceed to final artifacts until the Red Team gate passes.
 
 ## Front Taste Module Shape
 
-For step 6, use Front Taste only when visual quality, UI clarity, HTML report readability, dashboard composition, deck quality, or decision-material taste matters.
+For the final output package, use Front Taste only when visual quality, UI clarity, HTML report readability, dashboard composition, deck quality, or decision-material taste matters.
 
 1. Load the installed local `front-taste` skill.
 2. Ask it to review the relevant artifact direction or final draft.
-3. If `front-taste` recommends spawning the `front-taste` Sub Agent, the main Agent may spawn it and then integrate the findings.
+3. If `front-taste` recommends a sidecar, the main Agent may spawn it through the current `$front-taste` route and then integrate the findings.
 4. Treat must-fix taste findings as blockers for visual delivery only when they affect task clarity, trust, usability, readability, or artifact acceptance.
 
-Do not add a new numbered workflow step for Front Taste. It is a Step 6 validation module.
+Do not add a new numbered discussion step for Front Taste. It is a final output validation module.
 
 ## Final Artifact Rule
 
-Final artifacts are produced only in step 6:
+Final artifacts are produced only after the discussion round loop has yielded a confirmed package and the required final gates have passed:
 
 - PRD: Markdown
 - User story map: self-contained HTML
