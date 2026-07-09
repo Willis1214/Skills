@@ -2,9 +2,9 @@
 
 Brainstorm is a Codex skill for clarifying complex engineering or product ideas before implementation starts. It turns loose goals into a confirmed requirement package, risk review, and final PRD/story-map/QC artifacts without prescribing the implementation path.
 
-## What Changed In v2.1.0
+## What Changed In v2.2.0
 
-Version `2.1.0` updates Brainstorm from a serial step-by-step discussion flow into a repeatable round loop. Every discussion round now covers requirement clarification, story/flow mapping, structured confirmation, QC thinking, and risk attack in one fixed role-based format. The final package phase still requires the local Red Team gate, optional Front Taste review when visual quality matters, and validated output artifacts.
+Version `2.2.0` clarifies the role and gate contract inside Brainstorm. The Boundary Officer defines the current boundary, the Attacker attacks the stated boundary and current plan, the Reflector exposes map-changing unknowns, and Red Team remains the final artifact gate. The release also clarifies when `TBD` becomes blocking and when it may remain as a visible residual risk.
 
 ## What It Helps With
 
@@ -12,7 +12,7 @@ Version `2.1.0` updates Brainstorm from a serial step-by-step discussion flow in
 - Mapping user stories, process flow, system responses, condition branches, exceptions, and edge cases.
 - Keeping confirmed information and unresolved `TBD` items visible.
 - Adding QC and acceptance thinking before implementation.
-- Attacking assumptions and scope drift before final artifacts.
+- Defining boundaries, attacking boundary leaks, and separating round-level risk candidates from final Red Team gate decisions.
 - Producing a final package only after the requirement direction is confirmed and gates have passed.
 
 ## When To Use It
@@ -46,9 +46,11 @@ Every discussion round uses the fixed role-based format in `brainstorm/reference
 - `💡 补充者（系统视角）`
 - `🧱 边界官`
 - `⚔️ 攻击者`
+- `🛠️ 实践者`
+- `🪞 反思者`
 - `📌 汇总者`
 
-The role labels are part of the runtime contract. They keep each round readable while preserving depth across requirements, story/flow, confirmation, QC, and risk review.
+The role labels are part of the runtime contract. They keep each round readable while preserving depth across requirements, story/flow, confirmation, QC, boundary definition, risk attack, safe practice probing, and critical reflection.
 
 ## Final Outputs
 
@@ -73,7 +75,7 @@ Or copy the `brainstorm/` folder from this branch into your local Codex skills d
 ## Usage Prompt
 
 ```text
-Use $brainstorm to run repeated discussion rounds in the fixed role-based format; every round covers requirement clarification, story and flow mapping, structured confirmation, QC and acceptance thinking, and risk attack without prescribing the implementation path. When the package is ready, run the local Red Team skill, run the local Front Taste skill when visual quality matters, then output PRD Markdown, user-story-map HTML, and QC checklist Markdown.
+Use $brainstorm to run repeated discussion rounds in the fixed role-based format; every round covers requirement clarification, story and flow mapping, structured confirmation, boundary definition, QC and acceptance thinking, risk attack, safe MVP/demo probing when useful, and critical reflection without prescribing the implementation path. When the package is ready, run the local Red Team skill as the final gate, run the local Front Taste skill when visual quality matters, then output PRD Markdown, user-story-map HTML, and QC checklist Markdown.
 ```
 
 ## Repository Contents
@@ -96,6 +98,7 @@ Use $brainstorm to run repeated discussion rounds in the fixed role-based format
 - Brainstorm does not request or use credentials.
 - It marks unresolved content as `TBD`.
 - It constrains requirements and acceptance criteria, not implementation style.
+- It treats `TBD` as blocking only when the unknown can materially change the goal, boundary, acceptance standard, evidence requirement, delivery credibility, or whether the user should proceed.
 - It does not generate final artifacts until the round loop has enough confirmed context and the required review gates pass.
 - Red Team and Front Taste are local-skill-first modules. Brainstorm does not bypass those skills by inventing direct subagent work.
 

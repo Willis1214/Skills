@@ -1,4 +1,4 @@
 interface:
   display_name: "Brainstorm"
-  short_description: "Round-loop requirement, QC, risk, Red Team, and Front Taste workflow"
-  default_prompt: "Use $brainstorm to run repeated discussion rounds in the fixed role-based format; every round covers requirement clarification, story and flow mapping, structured confirmation, QC and acceptance thinking, and risk attack without prescribing the implementation path. When the package is ready, run the local Red Team skill, run the local Front Taste skill when visual quality matters, then output PRD Markdown, user-story-map HTML, and QC checklist Markdown."
+  short_description: "Role-based requirement, boundary, risk, practice, and final gate workflow"
+  default_prompt: "Use $brainstorm for role-based requirement rounds: clarify requirements, map story/flow, confirm decisions, define boundaries, attack boundary risks, check QC, check safe shortest-path MVP/demo probes when useful, and expose map-changing unknowns without prescribing implementation. Then run Red Team as the final gate and optional Front Taste before PRD/story-map/QC outputs."

@@ -13,6 +13,8 @@ The gate passes only when:
 3. Every original `High` finding is remediated in the confirmed package and the user confirms the remediation is complete.
 4. Any unresolved `Medium` or `Low` finding remains visible as `TBD`, owner-accepted risk, or a QC checklist item.
 
+`TBD` is allowed only when it is not blocking. A `TBD` is blocking when it can materially change the goal, boundary, acceptance standard, evidence requirement, delivery credibility, or whether the user should proceed. Blocking `TBD` items must be resolved or explicitly carried as Red Team `High` blockers before final artifacts are generated.
+
 The Red Team module must start from the installed local `red-team` skill. If that skill recommends spawning the `red-team` Sub Agent, the main Agent owns the spawn call and final gate decision.
 
 The Front Taste module must start from the installed local `front-taste` skill. If that skill recommends spawning the `front-taste` Sub Agent, the main Agent owns the spawn call and final delivery decision.

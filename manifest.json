@@ -1,9 +1,9 @@
 {
   "name": "brainstorm",
   "display_title": "Brainstorm",
-  "version": "2.1.0",
-  "release_date": "2026-07-01",
-  "description": "Codex skill for repeatable round-loop requirement clarification, story and flow mapping, structured confirmation, QC thinking, risk attack, Red Team gating, optional Front Taste review, and final PRD/story-map/QC outputs.",
+  "version": "2.2.0",
+  "release_date": "2026-07-09",
+  "description": "Codex skill for repeatable round-loop requirement clarification, story and flow mapping, structured confirmation, boundary definition, QC thinking, boundary-risk attack, critical reflection, Red Team final gating, optional Front Taste review, and final PRD/story-map/QC outputs.",
   "language": [
     "en",
     "zh-CN"
