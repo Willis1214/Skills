@@ -56,6 +56,36 @@ For each selected component, record:
 - `print_fallback`: what remains when controls and interactive affordances disappear.
 - `accessibility_notes`: heading order, labels, focus, contrast, and reading order.
 
+## Required Data and Fallback Map
+
+The following minimum contracts make the 25 components executable rather than decorative:
+
+- `decision-banner`: recommendation + confidence + next action; fallback is a labeled text summary.
+- `lead-block`: title + context + audience; fallback is the document heading and subtitle.
+- `metric-rail`: stable values + labels + units; fallback is a short list without tiles.
+- `status-rail`: state + owner/severity when relevant; fallback is labeled status text.
+- `section-rule`: section label; fallback is a semantic heading with no ornament.
+- `comparison-table`: shared criteria + option values; fallback is one stacked option summary per row.
+- `comparison-rail`: two or more explicitly comparable sides; fallback is a before/after text pair.
+- `scorecard`: dimensions + scoring basis + values; fallback is a ranked list with the scoring caveat.
+- `quadrant-matrix`: defined x/y axes + comparable points; fallback is a two-column priority list.
+- `criteria-matrix`: row/column entities + relationship values; fallback is grouped relationship text.
+- `timeline`: ordered dates/stages + labels; fallback is an ordered list.
+- `stepper`: finite steps + current state; fallback is a numbered procedure.
+- `swimlane`: participants + ordered events; fallback is grouped participant timelines.
+- `lifecycle-rail`: states + allowed transitions; fallback is a state table with transition notes.
+- `journey-map`: stages + user need/friction/action; fallback is a staged list.
+- `concentric-hierarchy`: explicit nesting levels; fallback is an indented hierarchy.
+- `relationship-overlap`: explicit sets + overlap labels; fallback is a relationship table.
+- `pyramid-hierarchy`: ordered levels + level rationale; fallback is a ranked hierarchy.
+- `architecture-map`: nodes + ownership/dependency edges; fallback is a grouped dependency list.
+- `data-figure`: series/points + axes/scale/legend/source + text takeaway; fallback is a data table.
+- `evidence-strip`: claim + source/status + confidence; fallback is a labeled evidence sentence.
+- `quote-callout`: supported quote or key sentence + source when external; fallback is normal prose.
+- `figure-annotation`: figure + annotation labels + why-it-matters caption; fallback is caption plus text description.
+- `details-source-note`: secondary evidence + caveat/source; fallback is an appendix section.
+- `code-terminal-block`: exact code/command text + optional language; fallback is a preformatted text block.
+
 ## Composition Limits
 
 - Select 2–6 components for a normal page section.

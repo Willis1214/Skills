@@ -20,6 +20,7 @@ Score each as `Pass`, `Weak`, or `Fail`:
 
 - Every paragraph is framed as a card without a semantic reason.
 - A chart or diagram is used without the data/relationship that justifies it.
+- A data figure lacks the applicable axis, scale, legend, labels, source, or text takeaway.
 - The first viewport hides the conclusion or primary visual claim.
 - Canvas text is unreadable at desktop or the mobile fallback clips key information.
 - A wide table or diagram has no mobile summary or text fallback.

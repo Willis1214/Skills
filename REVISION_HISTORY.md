@@ -2,6 +2,13 @@
 
 ## English
 
+### v1.2.1 - 2026-07-12
+
+- Hardened the Design Plan schema with explicit `supporting_patterns`.
+- Added a required-data and fallback map for all 25 semantic components.
+- Strengthened visual QC for axes, scale, legends, labels, sources, and text takeaways in data figures.
+- Updated the demo preview with readable fixed-size typography and an explicit mobile canvas fallback.
+
 ### v1.2.0 - 2026-07-12
 
 - Added a Design Layer that creates a visual plan before HTML implementation.
@@ -23,6 +30,13 @@
 - Initial local HTML decision-display skill using Markdown or structured source material as the evidence layer and HTML as the presentation layer.
 
 ## 中文
+
+### v1.2.1 - 2026-07-12
+
+- 为 Design Plan schema 增加显式 `supporting_patterns` 字段。
+- 为 25 个 semantic component 补充最小 required data 与 fallback 契约。
+- 强化 visual QC，对数据图形的坐标轴、刻度、图例、标签、来源和文字 takeaway 做逐项检查。
+- 更新 demo，移除 viewport-scaled typography，并补充 canvas 移动端可读 fallback。
 
 ### v1.2.0 - 2026-07-12
 

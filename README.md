@@ -56,4 +56,4 @@ HTML Creator 用于把 Markdown 草稿、研究笔记、报告、PRD、代码审
 
 ## 发布说明
 
-v1.2.0 增加 Design Layer、document/canvas renderer profiles、布局 atlas、语义组件目录、视觉方向、Design Plan schema 和 visual QC，让 HTML Creator 从“能生成页面”升级为“先做构图与组件决策，再生成页面”。
+v1.2.1 在 v1.2.0 的基础上补齐 supporting layout schema、逐组件最小数据/fallback 契约和 canvas 移动端 demo fallback，让 HTML Creator 从“能生成页面”升级为“先做构图与组件决策，再生成页面”。
