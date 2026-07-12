@@ -2,19 +2,22 @@
 
 ## English
 
-HTML Creator is a Codex skill for creating standalone, decision-ready HTML artifacts from Markdown drafts, research notes, reports, PRDs, code-review findings, market briefs, and evidence-heavy material. It treats HTML as the presentation and decision layer while keeping source Markdown, JSON, CSV, or notes as the evidence layer when those sources already exist.
+HTML Creator is a Codex skill for creating standalone, decision-ready HTML artifacts from Markdown drafts, research notes, reports, PRDs, code-review findings, market briefs, and evidence-heavy material. It keeps source material as the evidence layer and uses a design plan to choose a coherent layout, semantic components, and a renderer profile.
 
 ## What It Does
 
 - Selects a page archetype such as decision brief, visual PRD, evidence report, status report, or review page.
-- Turns flat source material into scannable sections, tables, evidence tiers, risks, and next actions.
-- Adds a diagram layer for flows, state transitions, architecture maps, data movement, dependency maps, and screen journeys when prose would be too flat.
-- Prefers self-contained HTML with inline CSS and offline-safe behavior.
-- Preserves diagram source text when generated from Mermaid or another diagram DSL.
+- Builds a design plan before implementation: visual direction, reading path, focal point, layout, components, responsive fallback, and anti-patterns.
+- Supports a scrollable `document` profile and a bounded 16:9 `canvas` profile for HTML-PPT-like pages, posters, and single-screen visual narratives.
+- Uses a curated layout atlas and semantic component catalog instead of random template or card-wall generation.
+- Adds diagrams and data figures when their relationships or evidence justify them.
+- Prefers self-contained HTML with inline CSS, minimal JavaScript, offline-safe behavior, and inspectable source information.
 
 ## When To Use
 
-Use this skill when the user asks for a local HTML report, decision page, visual PRD, high-density review artifact, evidence report, or workflow/architecture explanation. Do not use it for production frontend app implementation, generic landing pages, PowerPoint, Word, PDF, or short text answers.
+Use this skill when the user needs a local HTML report, decision page, visual PRD, evidence report, workflow/architecture explanation, or a richer HTML visual composition because Markdown is too flat.
+
+Do not use it for production frontend app implementation, PPTX/Word/PDF/Figma delivery, generic landing pages, raw data processing, or short linear notes.
 
 ## Install
 
@@ -22,31 +25,35 @@ Copy the `html-creator/` folder from this branch into your Codex skills director
 
 ## Quality Checks
 
-This release was validated with the Codex skill quick validator. The updated instructions also require rendered diagram checks when a generated HTML page contains diagrams.
+This release was validated with the Codex skill quick validator, frontmatter and metadata readback, trigger-fit checks, self-contained preview rendering, desktop/mobile checks, and visual QC focused on hierarchy, semantic components, responsive fallbacks, and anti-card-wall behavior.
 
 ## 中文
 
-HTML Creator 用于把 Markdown 草稿、研究笔记、报告、PRD、代码审查结果、市场简报和证据密集材料转换成单文件、可浏览、可决策的 HTML 展示物。它把 HTML 定位为展示层和决策层，不替代 Markdown、JSON、CSV 等源证据层。
+HTML Creator 用于把 Markdown 草稿、研究笔记、报告、PRD、代码审查结果、市场简报和证据密集材料转换成单文件、可浏览、可决策的 HTML 展示物。它把 HTML 定位为展示层和决策层，不替代 Markdown、JSON、CSV 等源证据层；在生成 HTML 前先建立 Design Plan，决定视觉方向、阅读路径、布局、语义组件和 renderer profile。
 
 ## 本版重点
 
-- 增加 Diagram Layer，支持流程图、状态图、系统架构、数据流、依赖图和页面旅程。
-- 明确 Mermaid / SVG 处理方式：优先离线安全、可检查、可保留源码。
-- 强化移动端可读性、图表渲染、标签可读性和无外部依赖检查。
+- 新增 Design Layer：先做视觉方向、主构图和组件选择，再实现 HTML。
+- 新增 `document` profile：支持长页阅读、证据、表格、移动端重排和打印。
+- 新增 `canvas` profile：支持受约束的 16:9 HTML-PPT-like 页面、海报和单屏信息图。
+- 新增 10–12 个 canonical layout 的布局 atlas 和 20–25 个 semantic component 的组件目录。
+- 新增 visual directions、Design Plan schema 和 visual QC，减少卡片墙、装饰性图表和随机布局。
+- 保留 Diagram Layer、证据边界、离线安全和移动端验证合同。
 
 ## 适用场景
 
 - 决策页、视觉 PRD、研究报告、状态报告、风险审查页。
-- Markdown 太线性，无法表达选项、证据、风险、流程或架构关系。
-- 需要在浏览器中阅读、归档或向管理层展示。
+- Markdown 太线性，无法表达选项、证据、风险、流程、架构或关系。
+- 需要在浏览器中阅读、归档、投屏或展示单一核心观点。
 
 ## 不适用场景
 
 - 生产前端应用开发。
 - 通用营销落地页。
-- PPT、Word、PDF、Figma 专用输出。
+- PPTX、Word、PDF、Figma 原生输出。
 - 很短的一屏文字说明。
+- 没有真实数据或关系语义，却只想添加装饰性图表。
 
 ## 发布说明
 
-v1.1.0 增加图形表达层，让 HTML 交付物可以承载流程、状态、架构和数据流，而不是只做简单排版。
+v1.2.0 增加 Design Layer、document/canvas renderer profiles、布局 atlas、语义组件目录、视觉方向、Design Plan schema 和 visual QC，让 HTML Creator 从“能生成页面”升级为“先做构图与组件决策，再生成页面”。

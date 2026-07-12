@@ -2,6 +2,15 @@
 
 ## English
 
+### v1.2.0 - 2026-07-12
+
+- Added a Design Layer that creates a visual plan before HTML implementation.
+- Added `document` and `canvas` renderer profiles with different layout and validation contracts.
+- Added a curated layout atlas with 12 canonical patterns.
+- Added a semantic component catalog with 25 components covering framing, comparison, flow, relationship, data, evidence, and detail.
+- Added four visual directions, a Design Plan schema, and visual QC for hierarchy, proof objects, responsive fallbacks, accessibility, and anti-card-wall behavior.
+- Preserved the existing evidence boundary, Diagram Layer, offline-safe output, and browser/mobile validation requirements.
+
 ### v1.1.0 - 2026-05-19
 
 - Added a Diagram Layer for flows, state transitions, architecture maps, dependencies, data movement, and screen journeys.
@@ -14,6 +23,15 @@
 - Initial local HTML decision-display skill using Markdown or structured source material as the evidence layer and HTML as the presentation layer.
 
 ## 中文
+
+### v1.2.0 - 2026-07-12
+
+- 新增 Design Layer，在实现 HTML 前先决定视觉方向、阅读路径、主构图和语义组件。
+- 新增 `document` 与 `canvas` 两种 renderer profile，分别服务长页报告和 16:9 单屏视觉页面。
+- 新增包含 12 个 canonical layout 的布局 atlas。
+- 新增包含 25 个 semantic component 的组件目录，覆盖框架、对比、流程、关系、数据、证据和细节表达。
+- 新增 4 个视觉方向、Design Plan schema 和 visual QC，检查层级、证据图形、响应式 fallback、无障碍和反卡片墙。
+- 保留原有证据边界、Diagram Layer、离线安全和浏览器/移动端验证要求。
 
 ### v1.1.0 - 2026-05-19
 
